@@ -1,0 +1,84 @@
+# 对比V3
+#### 切换flexbox为默认布局的解决方案，所以要先了解好flexbox
+* 切换rem为默认单位
+* 重写了js部分
+* 放弃了对IE8, IE9, iOS 6的支持，加入了Android v5.0的浏览器和web视图的官方支持
+* 切换sass为预编译文件
+* 切换16px为字体默认大小
+* 放弃字体图标
+* 在normalize的基础上重置了一些默认样式
+* 新增sm(<576px)栅格体系
+### 类改变
+* 新增flexbox
+    * d-flex\d-inline-flex\d-sm-flex等用来设置flex元素
+    * flex-row\flex-column-reverse\flex-sm-row等用来设置flex-direction
+    * justify-content-start\justify-content-sm-end等用来设置justify-content
+    * align-items-start\align-items-sm-start等用来设置align-items
+    * 类似的还有用来设置flex-order、align-self、flex-wrap、align-content等类
+* 栅格系统
+    * 所有涉及断点标识(lg、md)的都不做强制要求，为可选项
+    * col-xx-xx不强制要求指定，即rows下可col、col-6、col这样定义
+    * 新增justify-content-md-center(rows对齐方式)、col-md-auto(根据内容确定col宽度)
+    * 新增align-self-start用来确定col的对齐方式
+    * col-md-offset-3变为offset-md-3
+    * 新增w-100强制换行
+    * hidden-sm改为hidden-sm-up\hidden-sm-down
+    * 新增flex-last等flex排序类
+* 新增d-block等用来设置元素的display属性
+* 新增no-gutters用来清除margin、padding带来的间隙
+* 新增display-(1\2\3\4)用来设置类h1的样式
+* 新增list-inline-item类设置列表元素为行内元素
+* 新增inverse集(包括table-inverse\thead-inverse\card-inverse\bg-inverse)用以设置背景色为深色
+* table
+    * 新增table-sm用来控制table的大小
+    * 修改table下active为table-active类，类似的还有table-success、table-warning、table-danger、table-info
+* borders
+    * 新增border-0、border-top-0等用于控制border各方向的宽度
+    * 新增rounded、rounded-0、rounded-top等用于控制各方向的border-radius
+* buttons
+    * 修改btn-default为btn-secondary
+* 新增p{t\r等方位的缩写}-(1-5)用来控制padding
+* 新增m{t\r等方位的缩写}-{sm\lg}-(0\auto)用来控制margin
+* 新增float-{sm,md,lg,xl}-{left,right,none} 类并同时移除pull-left、pull-right
+* 新增(w\h)-(25\50\75\100)用来设置宽高的百分比
+* 新增(mw\mh)-100用来设置元素的最大宽高
+* 新增text-{sm,md,lg,xl}-left用来设置在不同屏幕下的文本对齐方式
+* 新增font-weight-(bold\normal)用来设置字体的粗细
+* 新增align-baseline、align-top、text-top等用来设置元素的垂直对其方式
+# 常用class
+* text-center:文本居中对齐，类似的还有text-left | text-right | text-justify
+* text-nowrap:文本不换行
+* center-block:使内容水平居中
+* text-lowercase:转为小写，text-uppercase转为大写，text-capitalize:单词首字母大写
+* list-unstyled:去除li等样式
+* list-inline:使li成为行内元素，横向水平排列
+* table:改变表格默认样式为bsp风格的
+* table-striped:使table拥有斑马条纹样式
+* table-bordered:使table有边框
+* table-hover:使table在hover时作出相应
+* table-condensed 可以让表格更加紧凑，单元格中的内补（padding）均会减半
+* form-inline:可以让包裹在此类下的表单元素水平横向排列
+* form-control:使用此类可以很方便的优化表单元素的默认样式
+* input-group-addon:添加此类的元素可以在视觉上成为input的一部分，须在父元素上添加input-group类
+* btn:改变按钮默认样式为bsp风格的
+* pull-left、pull-right:左右浮动,如果是导航条nav请使用navbar-left或navbar-right
+* clearfix:清除浮动
+* show、hidden:显示或隐藏内容
+* btn-group：可快速去除几个按钮之间因代码格式化导致的间距问题
+* btn-group-vertical:使按钮组垂直排列
+* well:使内容有凹陷显示或插图效果
+* invisible:设置属性visibility为hidden
+#### 一些常用的类集合
+- success、warning、error、danger、info等，这些类都是改变颜色、背景色等基本样式的，在很多元素上都有用到
+    - 表格：直接在tr、td上使用active、success、warning、danger、info改变基本样式
+    - 表单：直接在label、input等父元素上使用has-success、has-warning、has-error改变基本样式
+    - 按钮：直接在按钮元素添加btn-success、btn-info、btn-warning、btn-danger等改变基本样式
+    - 文本元素：bg-primary、bg-success、bg-info、bg-warning、bg-danger改变基本样式
+    - 标签：label-default、label-primary、label-success、label-info、label-warning、label-danger改变基本样式
+    - 警告框：alert-success、alert-info、alert-warning、alert-danger改变基本样式
+    - 面板：panel-primary、panel-success、panel-info、panel-warning、panel-danger改变基本样式
+- lg、sm、xs这些类都是改变大小的类，可用在
+    - 表单组：form-group-lg（增大的）
+    - 输入框：input-sm（小的）
+    - 按钮：btn-xs（超小的）
+* container-fluid宽度为100%的容器
