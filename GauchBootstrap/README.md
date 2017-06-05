@@ -61,7 +61,6 @@
 * form-control:使用此类可以很方便的优化表单元素的默认样式
 * input-group-addon:添加此类的元素可以在视觉上成为input的一部分，须在父元素上添加input-group类
 * btn:改变按钮默认样式为bsp风格的
-* pull-left、pull-right:左右浮动,如果是导航条nav请使用navbar-left或navbar-right
 * clearfix:清除浮动
 * show、hidden:显示或隐藏内容
 * btn-group：可快速去除几个按钮之间因代码格式化导致的间距问题
