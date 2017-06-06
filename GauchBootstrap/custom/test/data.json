@@ -3,7 +3,7 @@
     {
       "label": "南京华苏",
       "class":"howso",
-      "iconClass":"",
+      "iconClass":"fa fa-address-book",
       "children": [
         {
           "label": "长江研发中心",

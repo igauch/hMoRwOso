@@ -1,9 +1,23 @@
 <ul class="nav flex-column bg-primary">
     <li class="nav-item {{data.class}}" ng-repeat="data in sideConfigData track by $index">
-        <span class="d-inline-block"></span>
-        <a class="nav-link text-white" ui-sref="{{data.href}}" ui-sref-active="active" ng-if="data.href">{{data.label}}</a>
-        <ul class="nav flex-column" ng-if="">
-
+        <span class="d-inline-block {{data.iconClass}}"></span>
+        <a class="nav-link text-white" ui-sref="{{data.href}}" ui-sref-active="active">{{data.label}}</a>
+        <ul class="nav flex-column">
+            <li class="nav-item {{data2.class}}" ng-repeat="data2 in data.children track by $index">
+                <span class="d-inline-block {{data2.iconClass}}"></span>
+                <a class="nav-link text-white" ui-sref="{{data2.href}}" ui-sref-active="active">{{data2.label}}</a>
+                <ul class="nav flex-column">
+                    <li class="nav-item {{data3.class}}" ng-repeat="data3 in data2.children track by $index">
+                        <span class="d-inline-block {{data3.iconClass}}"></span>
+                        <a class="nav-link text-white" ui-sref="{{data3.href}}" ui-sref-active="active">{{data3.label}}</a>
+                        <ul class="nav flex-column">
+                            <li class="nav-item {{data4.class}}" ng-repeat="data4 in data3.children track by $index"></li>
+                            <span class="d-inline-block {{data4.iconClass}}"></span>
+                            <a class="nav-link text-white" ui-sref="{{data4.href}}" ui-sref-active="active">{{data4.label}}</a>
+                        </ul>
+                    </li>
+                </ul>
+            </li>          
         </ul>
     </li>
 </ul>
