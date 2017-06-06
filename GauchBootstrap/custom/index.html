@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title>Bootstrap</title>
     <link rel="stylesheet" href="dist/css/GauchBootstrap.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="test/angular.js"></script>
+    <script src="test/angular-ui-router.js"></script>
     <script src="../node_modules/tether/dist/js/tether.js"></script>
     <script src="dist/js/bootstrap.js"></script>
+    <script src="test/gSide.js"></script>
 </head>
-<body>
+<body ng-controller="myCtrl">
 <h1>GauchBootstrap</h1>
+<div class="float-left">
+    <g-side config-data="sideConfigData"></g-side>
+</div>
 <div>
     <p>p</p>
     <span>span</span>
@@ -21,4 +28,5 @@
     <li>3</li>
 </ul>
 </body>
+<script src="index.js"></script>
 </html>

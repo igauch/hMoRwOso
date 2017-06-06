@@ -1,0 +1,116 @@
+{
+  "data": [
+    {
+      "label": "南京华苏",
+      "class":"howso",
+      "iconClass":"",
+      "children": [
+        {
+          "label": "长江研发中心",
+          "children": [
+            {
+              "label": "大数据",
+              "children": [
+                {
+                  "label": "前端",
+                  "children": [
+                    {
+                      "label": "中级",
+                      "href": ""
+                    },
+                    {
+                      "label": "高级",
+                      "href": ""
+                    }
+                  ]
+                },
+                {
+                  "label": "后台",
+                  "href": ""
+                }
+              ]
+            },
+            {
+              "label": "网优",
+              "href": ""
+            },
+            {
+              "label": "爱立信",
+              "href": ""
+            },
+            {
+              "label": "软件一部",
+              "href": ""
+            }
+          ]
+        },
+        {
+          "label": "总部",
+          "children": [
+            {
+              "label": "人事",
+              "href": ""
+            },
+            {
+              "label": "财务",
+              "children": [
+                {
+                  "label": "一部",
+                  "children": [
+                    {
+                      "label": "会计",
+                      "children": [
+                        {
+                          "label": "中级",
+                          "href": ""
+                        },
+                        {
+                          "label": "高级",
+                          "href": ""
+                        }
+                      ]
+                    },
+                    {
+                      "label": "出纳",
+                      "href": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "总裁办",
+              "href": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "华为",
+      "children": [
+        {
+          "label": "南京研发中心",
+          "href": ""
+        },
+        {
+          "label": "总部",
+          "children": [
+            {
+              "label": "人事",
+              "href": ""
+            },
+            {
+              "label": "总裁办",
+              "href": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "阿里巴巴",
+      "href": "alibaba.com"
+    }
+  ]
+}
