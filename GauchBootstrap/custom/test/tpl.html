@@ -1,26 +1,43 @@
-<ul class="nav flex-column bg-primary">
-    <li class="nav-item {{data.class}}" ng-repeat="data in sideConfigData track by $index">
-        <span class="d-inline-block {{data.iconClass}}"></span>
-        <a class="nav-link text-white" ui-sref="{{data.href}}" ui-sref-active="active">{{data.label}}</a>
-        <ul class="nav flex-column">
-            <li class="nav-item {{data2.class}}" ng-repeat="data2 in data.children track by $index">
-                <span class="d-inline-block {{data2.iconClass}}"></span>
-                <a class="nav-link text-white" ui-sref="{{data2.href}}" ui-sref-active="active">{{data2.label}}</a>
-                <ul class="nav flex-column">
-                    <li class="nav-item {{data3.class}}" ng-repeat="data3 in data2.children track by $index">
-                        <span class="d-inline-block {{data3.iconClass}}"></span>
-                        <a class="nav-link text-white" ui-sref="{{data3.href}}" ui-sref-active="active">{{data3.label}}</a>
-                        <ul class="nav flex-column">
-                            <li class="nav-item {{data4.class}}" ng-repeat="data4 in data3.children track by $index"></li>
-                            <span class="d-inline-block {{data4.iconClass}}"></span>
-                            <a class="nav-link text-white" ui-sref="{{data4.href}}" ui-sref-active="active">{{data4.label}}</a>
-                        </ul>
-                    </li>
-                </ul>
-            </li>          
-        </ul>
-    </li>
-</ul>
+<div>
+    <!--一级菜单-->
+    <ul class="nav flex-column bg-primary side-1">
+        <li class="nav-item {{data1.class}}" ng-repeat="data1 in sideConfigData track by $index">
+            <span class="d-inline-block {{data1.iconClass}}"></span>
+            <a class="nav-link text-white" ui-sref="{{data1.href}}" ui-sref-active="active">{{data1.label}}</a>
+            <!--二级菜单-->
+            <ul class="nav flex-column side-2">
+                <li class="nav-item {{data2.class}}" ng-repeat="data2 in data1.children track by $index">
+                    <span class="d-inline-block {{data2.iconClass}}"></span>
+                    <a class="nav-link text-white" ui-sref="{{data2.href}}" ui-sref-active="active">{{data2.label}}</a>
+                    <!--三级菜单-->
+                    <ul class="nav flex-column side-3">
+                        <li class="nav-item {{data3.class}}" ng-repeat="data3 in data2.children track by $index">
+                            <span class="d-inline-block {{data3.iconClass}}"></span>
+                            <a class="nav-link text-white" ui-sref="{{data3.href}}"
+                               ui-sref-active="active">{{data3.label}}</a>
+                            <!--四级菜单-->
+                            <ul class="nav flex-column side-4">
+                                <li class="nav-item {{data4.class}}"
+                                    ng-repeat="data4 in data3.children track by $index">
+                                    <span class="d-inline-block {{data4.iconClass}}"></span>
+                                    <a class="nav-link text-white" ui-sref="{{data4.href}}" ui-sref-active="active">{{data4.label}}</a>
+                                    <!--五级菜单-->
+                                    <ul class="nav flex-column side-5">
+                                        <li class="nav-item {{data4.class}}"
+                                            ng-repeat="data5 in data4.children track by $index">
+                                            <span class="d-inline-block {{data5.iconClass}}"></span>
+                                            <a class="nav-link text-white" ui-sref="{{data5.href}}" ui-sref-active="active">{{data5.label}}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
 
 <!--
 <div>

@@ -1,0 +1,13 @@
+@import "../scss/_variables";
+.side-2{
+  background-color: lighten($brand-primary,4%);
+}
+.side-3{
+  background-color: lighten($brand-primary,8%);
+}
+.side-4{
+  background-color: lighten($brand-primary,12%);
+}
+.side-5{
+  background-color: lighten($brand-primary,15%);
+}
