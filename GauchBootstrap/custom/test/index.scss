@@ -1,13 +1,32 @@
 @import "../scss/_variables";
+//.side-1{
+//  background-color: $brand-primary;
+//}
+//.side-2{
+//  background-color: lighten($brand-primary,4%);
+//}
+//.side-3{
+//  background-color: lighten($brand-primary,8%);
+//}
+//.side-4{
+//  background-color: lighten($brand-primary,12%);
+//}
+//.side-5{
+//  background-color: lighten($brand-primary,15%);
+//}
+
+.side-1{
+  background-color: red;
+}
 .side-2{
-  background-color: lighten($brand-primary,4%);
+  background-color: orange;
 }
 .side-3{
-  background-color: lighten($brand-primary,8%);
+  background-color: yellow;
 }
 .side-4{
-  background-color: lighten($brand-primary,12%);
+  background-color: green;
 }
 .side-5{
-  background-color: lighten($brand-primary,15%);
+  background-color: blue;
 }

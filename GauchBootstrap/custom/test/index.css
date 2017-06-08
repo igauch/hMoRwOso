@@ -1,13 +1,16 @@
+.side-1 {
+  background-color: red; }
+
 .side-2 {
-  background-color: #0280ec; }
+  background-color: orange; }
 
 .side-3 {
-  background-color: #068bfd; }
+  background-color: yellow; }
 
 .side-4 {
-  background-color: #1a94fd; }
+  background-color: green; }
 
 .side-5 {
-  background-color: #299bfd; }
+  background-color: blue; }
 
 /*# sourceMappingURL=index.css.map */

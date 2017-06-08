@@ -15,19 +15,24 @@
 </head>
 <body ng-controller="myCtrl">
 <h1>GauchBootstrap</h1>
-<div class="float-left">
-    <g-side config-data="sideConfigData"></g-side>
+<div class="container-fluid clearfix p-0">
+    <div class="float-left">
+        <g-side config-data="sideConfigData"></g-side>
+    </div>
+    <div class="float-left text-center" ui-view>
+
+    </div>
 </div>
-<div>
-    <p>p</p>
-    <span>span</span>
-    <div>div</div>
-</div>
-<ul>
-    <li class="list-inline-item">1</li>
-    <li class="list-inline-item">2</li>
-    <li>3</li>
-</ul>
+<!--<div>-->
+    <!--<p>p</p>-->
+    <!--<span>span</span>-->
+    <!--<div>div</div>-->
+<!--</div>-->
+<!--<ul>-->
+    <!--<li class="list-inline-item">1</li>-->
+    <!--<li class="list-inline-item">2</li>-->
+    <!--<li>3</li>-->
+<!--</ul>-->
 </body>
 <script src="index.js"></script>
 </html>
