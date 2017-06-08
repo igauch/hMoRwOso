@@ -22,6 +22,7 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
                     '</a>' +
                     '<div ng-if="!data1.href" class="nav-link text-white">' +
                     '<span class="d-inline-block {{data1.iconClass}}"></span>{{data1.label}}' +
+                    '<span class="caret" ng-if="data1.children&&data1.children.length"></span>'+
                     '</div>' +
                     '</li>' +
                     '</ul>'

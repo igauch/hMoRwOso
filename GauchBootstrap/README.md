@@ -24,6 +24,8 @@
     * 新增w-100强制换行
     * hidden-sm改为hidden-sm-up\hidden-sm-down
     * 新增flex-last等flex排序类
+* 使用cards来替换v3的缩略图、well和下拉面板
+    * 
 * 新增d-block等用来设置元素的display属性
 * 新增no-gutters用来清除margin、padding带来的间隙
 * 新增display-(1\2\3\4)用来设置类h1的样式
@@ -84,3 +86,4 @@
 # 个人修改
 * 新增.hidden用以隐藏元素和与权重为important的[hidden]做对比使用
 * 新增几种手势控制类：cursor-pointer(手势光标)、cursor-wait(加载光标)、cursor-text(文本编辑光标)
+* v4官方删除了三角符号caret,但这里做了保持
