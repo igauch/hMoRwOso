@@ -6641,4 +6641,7 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   .hidden-print {
     display: none !important; } }
 
+.hidden {
+  display: none; }
+
 /*# sourceMappingURL=GauchBootstrap.css.map */

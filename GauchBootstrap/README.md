@@ -81,3 +81,5 @@
     - 输入框：input-sm（小的）
     - 按钮：btn-xs（超小的）
 * container-fluid宽度为100%的容器
+# 个人修改
+* [hidden]display:none的权重为important;.hidden为正常权重
