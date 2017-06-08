@@ -22,7 +22,7 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
                     '</a>' +
                     '<div ng-if="!data1.href" class="nav-link text-white">' +
                     '<span class="d-inline-block {{data1.iconClass}}"></span>{{data1.label}}' +
-                    '<span class="caret" ng-if="data1.children&&data1.children.length"></span>'+
+                    '<span class="caret" ng-if="data1.children&&data1.children.length"></span>' +
                     '</div>' +
                     '</li>' +
                     '</ul>'
@@ -53,13 +53,13 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
                 if (p1) {
                     //构建html模板
                     forAppendElement(ele, 'sideConfigData', 1);//构建一个
-                    var dataDept=2;//计算出导航数据的最大深度
-                    angular.forEach(p1,function (v) {
-                        var str=JSON.stringify(v),//转为字符串
-                            stopIndex=str.indexOf(']')>0?str.indexOf(']'):undefined,//根据数组的 [ 筛选有效的深度
-                            patternArr=str.substring(0,stopIndex).match(/\[/g),
-                            dept=(patternArr?patternArr.length:0)+2;
-                        dataDept=dept>dataDept?dept:dataDept;
+                    var dataDept = 2;//计算出导航数据的最大深度
+                    angular.forEach(p1, function (v) {
+                        var str = JSON.stringify(v),//转为字符串
+                            stopIndex = str.indexOf(']') > 0 ? str.indexOf(']') : undefined,//根据数组的 [ 筛选有效的深度
+                            patternArr = str.substring(0, stopIndex).match(/\[/g),
+                            dept = (patternArr ? patternArr.length : 0) + 2;
+                        dataDept = dept > dataDept ? dept : dataDept;
                     });
                     for (var i = 2; i < dataDept; i++) {//根据数据的深度去构建对应的模板
                         forAppendElement(newEle, 'data1.children', i, 'hidden');
@@ -69,8 +69,8 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
 
                     //根据激活的路由初始化展开的部分
                     $timeout(function () {//compile后执行
-                        var allShowEle=$('.active').parents().filter(function () {
-                            if (this.nodeName === 'UL' && this.className.indexOf('hidden')>-1) {
+                        var allShowEle = $('.active').parents().filter(function () {
+                            if (this.nodeName === 'UL' && this.className.indexOf('hidden') > -1) {
                                 return true
                             }
                         });
