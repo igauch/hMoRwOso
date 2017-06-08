@@ -1,3 +1,14 @@
 .hidden{
   display: none;
 }
+.cursor{
+  &-pointer{
+    cursor: pointer;
+  }
+  &-wait{
+    cursor: wait;
+  }
+  &-text{
+    cursor: text;
+  }
+}

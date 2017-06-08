@@ -6644,4 +6644,11 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 .hidden {
   display: none; }
 
+.cursor-pointer {
+  cursor: pointer; }
+.cursor-wait {
+  cursor: wait; }
+.cursor-text {
+  cursor: text; }
+
 /*# sourceMappingURL=GauchBootstrap.css.map */

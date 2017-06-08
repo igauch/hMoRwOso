@@ -11,7 +11,7 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
         replace: true,
         link: function (sp, ele, attr) {
 
-            //构建html
+            //构建html模板事件
             var newEle;//指定新的元素以进行下一次元素的循环插入
             var forAppendElement = function (ele, dataNameString, index, hidden) {
                 ele.append(
@@ -50,10 +50,20 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
 
             var watchData = sp.$watch('sideConfigData', function (p1) {//当数据传入时执行
                 if (p1) {
-                    forAppendElement(ele, 'sideConfigData', 1);
-                    for (var i = 2; i < 6; i++) {//如果确实有必要可以修改i的最大值以扩展导航的深度
+                    //构建html模板
+                    forAppendElement(ele, 'sideConfigData', 1);//构建一个
+                    var dataDept=2;//计算出导航数据的最大深度
+                    angular.forEach(p1,function (v) {
+                        var str=JSON.stringify(v),//转为字符串
+                            stopIndex=str.indexOf(']')>0?str.indexOf(']'):undefined,//根据数组的 [ 筛选有效的深度
+                            patternArr=str.substring(0,stopIndex).match(/\[/g),
+                            dept=(patternArr?patternArr.length:0)+2;
+                        dataDept=dept>dataDept?dept:dataDept;
+                    });
+                    for (var i = 2; i < dataDept; i++) {//根据数据的深度去构建对应的模板
                         forAppendElement(newEle, 'data1.children', i, 'hidden');
                     }
+
                     $compile(ele.contents())(sp);//append的元素需要compile
 
                     //根据激活的路由初始化展开的部分
