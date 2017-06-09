@@ -9,7 +9,7 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
             sideConfigData: '=configData'
         },
         replace: true,
-        link: function (sp, ele, attr) {
+        link: function (sp, ele) {
 
             //构建html模板事件
             var newEle;//指定新的元素以进行下一次元素的循环插入
