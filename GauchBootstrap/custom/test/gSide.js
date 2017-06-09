@@ -46,7 +46,6 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
             };
 
             //根据激活的路由初始化展开的部分
-            // var activeShowCtrl=true;
             var activeShow=function () {
                 angular.element('.side-1').find('ul').hide();
                 var allShowEle = $('.active').parents().filter(function () {
