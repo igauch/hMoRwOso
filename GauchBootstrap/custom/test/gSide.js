@@ -20,9 +20,10 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
                     '<a ng-if="data1.href" class="nav-link text-white cursor-pointer" ui-sref="{{data1.href}}" ui-sref-active="active">' +
                     '<span class="d-inline-block {{data1.iconClass}}"></span>{{data1.label}}' +
                     '</a>' +
-                    '<div ng-if="!data1.href" class="nav-link text-white cursor-pointer">' +
-                    '<span class="d-inline-block {{data1.iconClass}}"></span>{{data1.label}}' +
-                    '<span class="caret" ng-if="data1.children&&data1.children.length"></span>' +
+                    '<div ng-if="!data1.href" class="nav-link text-white cursor-pointer d-flex align-items-center">' +
+                    '<span class="d-inline-block {{data1.iconClass}}"></span>{{data1.label}}'+
+                    '<span class="flex-1"></span>' +
+                    '<span class="caretCtrl caret-right" ng-if="data1.children&&data1.children.length"></span>' +
                     '</div>' +
                     '</li>' +
                     '</ul>'
@@ -32,6 +33,7 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
 
             //点击事件
             //每一次点击都隐藏除它下一个相邻元素外的所有比它文档节点更深的元素，再展开当前元素的下一个相邻元素
+            //TODO 点击的是div||a但event实际是真实点击的元素
             ele.on('click', 'div,a', function (e) {
                 var target = e.target,
                     curEle = angular.element(target),
@@ -44,9 +46,15 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
                             return true;
                         }
                     });
-                angular.element(allHidEle).slideUp("fast");//隐藏
+                angular.element(allHidEle).slideUp("fast",function () {
+                    angular.forEach(allHidEle,function (v) {
+                        angular.element(v).prev().find('.caretCtrl').removeClass('caret').addClass('caret-right');
+                    })
+                });//隐藏
 
-                curEleNext.slideToggle('fast');//展开显示
+                curEleNext.slideToggle('fast',function () {
+                    angular.element(curEle).find('.caretCtrl').toggleClass('caret caret-right')
+                });//展开显示
             });
 
             var watchData = sp.$watch('sideConfigData', function (p1) {//当数据传入时执行
@@ -75,6 +83,9 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
                             }
                         });
 
+                        angular.forEach(allShowEle,function (v) {
+                            angular.element(v).prev().find('.caretCtrl').removeClass('caret-right').addClass('caret');
+                        });
                         angular.element(allShowEle).show();
                     });
 

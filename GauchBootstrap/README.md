@@ -90,6 +90,7 @@
     - 按钮：btn-xs（超小的）
 * container-fluid宽度为100%的容器
 # 个人修改
+* 修改栅格系统为24份
 * 新增.hidden用以隐藏元素和与权重为important的[hidden]做对比使用
 * 新增几种手势控制类：cursor-pointer(手势光标)、cursor-wait(加载光标)、cursor-text(文本编辑光标)
 * v4官方删除了三角符号caret,但这里做了保持
