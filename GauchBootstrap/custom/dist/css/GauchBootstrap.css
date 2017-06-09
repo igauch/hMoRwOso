@@ -7449,4 +7449,10 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 .flex-1 {
   flex: 1; }
 
+.position-right {
+  position: absolute;
+  left: 100%;
+  width: 100%;
+  top: 0; }
+
 /*# sourceMappingURL=GauchBootstrap.css.map */
