@@ -30,7 +30,7 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
             var forAppendElement = function (ele, dataNameString, index, hidden, position) {
                 ele.append(
                     '<ul class="nav flex-column side-' + index + ' ' + hidden +' '+position+ '">' +
-                    '<li class="nav-item dropdown {{data1.class}}" ng-repeat="data1 in ' + dataNameString + ' track by $index">' +
+                    '<li class="nav-item dropdown {{data1.class}} bg-primary" ng-repeat="data1 in ' + dataNameString + ' track by $index">' +
                     '<a ng-if="data1.href" class="nav-link text-white cursor-pointer" ui-sref="{{data1.href}}" ui-sref-active="active">' +
                     '<span class="d-inline-block {{data1.iconClass}}"></span>{{data1.label}}' +
                     '</a>' +
