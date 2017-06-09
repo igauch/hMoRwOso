@@ -39,14 +39,20 @@
     * 新增rounded、rounded-0、rounded-top等用于控制各方向的border-radius
 * buttons
     * 修改btn-default为btn-secondary
-* 新增p{t\r等方位的缩写}-(1-5)用来控制padding
-* 新增m{t\r等方位的缩写}-{sm\lg}-(0\auto)用来控制margin
+* 新增p{t\r等方位的缩写和x\y\auto}-(1-5)用来控制padding
+* 新增m{t\r等方位的缩写和x\y\auto}-{sm\lg}-(0\auto)用来控制margin
 * 新增float-{sm,md,lg,xl}-{left,right,none} 类并同时移除pull-left、pull-right
 * 新增(w\h)-(25\50\75\100)用来设置宽高的百分比
 * 新增(mw\mh)-100用来设置元素的最大宽高
 * 新增text-{sm,md,lg,xl}-left用来设置在不同屏幕下的文本对齐方式
 * 新增font-weight-(bold\normal)用来设置字体的粗细
 * 新增align-baseline、align-top、text-top等用来设置元素的垂直对其方式
+* 修改col-{sm,md,lg,xl}-offset-{num}为offset-{num}
+* 修改col-{sm,md,lg,xl}-{push,pull}-{num}为{push,pull}-{num}
+* 新增fixed-{bottom,top}
+* 新增sticky-top用来设置元素定位属性为sticky
+### JS改变
+* 
 # 常用class
 * text-center:文本居中对齐，类似的还有text-left | text-right | text-justify
 * text-nowrap:文本不换行

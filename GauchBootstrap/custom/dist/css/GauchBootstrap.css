@@ -6651,7 +6651,7 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 .cursor-text {
   cursor: text; }
 
-.caret {
+.caret, .caret-right {
   display: inline-block;
   width: 0;
   height: 0;
@@ -6661,5 +6661,9 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   border-top: 0.3em solid;
   border-right: 0.3em solid transparent;
   border-left: 0.3em solid transparent; }
+  .caret-right {
+    border-left: 0.3em solid;
+    border-top: 0.3em solid transparent;
+    border-bottom: 0.3em solid transparent; }
 
 /*# sourceMappingURL=GauchBootstrap.css.map */

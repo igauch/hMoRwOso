@@ -4,7 +4,7 @@
 angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
     return {
         restrict: 'EA',
-        template: '<div class="g-side"><style>.g-side div,a{cursor: pointer;}</style></div>',
+        template: '<div class="g-side"></div>',
         scope: {
             sideConfigData: '=configData'
         },
@@ -17,10 +17,10 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
                 ele.append(
                     '<ul class="nav flex-column side-' + index + ' ' + hidden + '">' +
                     '<li class="nav-item {{data1.class}}" ng-repeat="data1 in ' + dataNameString + ' track by $index">' +
-                    '<a ng-if="data1.href" class="nav-link text-white" ui-sref="{{data1.href}}" ui-sref-active="active">' +
+                    '<a ng-if="data1.href" class="nav-link text-white cursor-pointer" ui-sref="{{data1.href}}" ui-sref-active="active">' +
                     '<span class="d-inline-block {{data1.iconClass}}"></span>{{data1.label}}' +
                     '</a>' +
-                    '<div ng-if="!data1.href" class="nav-link text-white">' +
+                    '<div ng-if="!data1.href" class="nav-link text-white cursor-pointer">' +
                     '<span class="d-inline-block {{data1.iconClass}}"></span>{{data1.label}}' +
                     '<span class="caret" ng-if="data1.children&&data1.children.length"></span>' +
                     '</div>' +

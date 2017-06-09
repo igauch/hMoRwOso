@@ -22,4 +22,10 @@
   border-top: $caret-width solid;
   border-right: $caret-width solid transparent;
   border-left: $caret-width solid transparent;
+  &-right{
+    @extend .caret;
+    border-left: $caret-width solid;
+    border-top: $caret-width solid transparent;
+    border-bottom: $caret-width solid transparent;
+  }
 }
