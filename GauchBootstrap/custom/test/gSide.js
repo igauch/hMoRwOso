@@ -15,35 +15,63 @@
 //依赖uirouter,可根据路由初始化到激活路由的导航
 //不限制导航的深度
 //TODO 暂时依赖简单修改的bootstrap4，已做CDN嵌入，无需再做引用
-angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
+angular.module('gSideTpl',[]).run(['$templateCache',function (tpl) {
+    tpl.put('gSideTpl.html',
+        '<li class="nav-item dropdown {{data.class}} bg-primary side-{{$index}}" ng-repeat="data in data track by $index">' +
+        '<a ng-if="data.href" class="nav-link text-white cursor-pointer" ui-sref="{{data.href}}" ui-sref-active="active">' +
+        '<span class="d-inline-block {{data.iconClass}}"></span>{{data.label}}' +
+        '</a>' +
+        '<div ng-if="!data.href" class="nav-link text-white cursor-pointer d-flex align-items-center">' +
+        '<span class="d-inline-block {{data.iconClass}}"></span>{{data.label}}'+
+        '<span class="flex-1"></span>' +
+        '<span class="caretCtrl caret-right" ng-if="data.children&&data.children.length"></span>' +
+        '</div>' +
+
+        '<ul ng-if="data.children" class="nav flex-column"  ng-include="gSideTpl.html"></ul>' +
+
+        '</li>'
+    );
+}]);
+
+angular.module('gSide', ['gSideTpl']).directive('gSide', function ($compile, $timeout) {
     return {
         restrict: 'EA',
-        template: '<div class="g-side"><link rel="stylesheet" href="http://src.igauch.cn/GauchBootstrap.css"></div>',
+        template:
+        '<div class="g-side">' +
+        '<link rel="stylesheet" href="http://src.igauch.cn/GauchBootstrap.css">' +
+
+        '<ul class="nav flex-column" ng-include="'+"test.html"+'"></ul>' +
+
+        '</div>',
         scope: {
-            sideConfigData: '=configData'
+            data: '=configData'
         },
         replace: true,
         link: function (sp, ele, attr) {
-
-            //构建html模板事件
-            var newEle;//指定新的元素以进行下一次元素的循环插入
-            var forAppendElement = function (ele, dataNameString, index, hidden, position) {
-                ele.append(
-                    '<ul class="nav flex-column side-' + index + ' ' + hidden +' '+position+ '">' +
-                    '<li class="nav-item dropdown {{data1.class}} bg-primary" ng-repeat="data1 in ' + dataNameString + ' track by $index">' +
-                    '<a ng-if="data1.href" class="nav-link text-white cursor-pointer" ui-sref="{{data1.href}}" ui-sref-active="active">' +
-                    '<span class="d-inline-block {{data1.iconClass}}"></span>{{data1.label}}' +
-                    '</a>' +
-                    '<div ng-if="!data1.href" class="nav-link text-white cursor-pointer d-flex align-items-center">' +
-                    '<span class="d-inline-block {{data1.iconClass}}"></span>{{data1.label}}'+
-                    '<span class="flex-1"></span>' +
-                    '<span class="caretCtrl caret-right" ng-if="data1.children&&data1.children.length"></span>' +
-                    '</div>' +
-                    '</li>' +
-                    '</ul>'
-                );
-                newEle = ele.find('li');
-            };
+            //
+            // //构建html模板事件
+            // var newEle;//指定新的元素以进行下一次元素的循环插入
+            // var forAppendElement = function (ele, dataNameString, index, hidden, position) {
+            //     ele.append(
+            //         '<ul class="nav flex-column side-' + index + ' ' + hidden +' '+position+ '">' +
+            //         '<li class="nav-item dropdown {{data.class}} bg-primary" ng-repeat="data in data track by $index">' +
+            //         '<a ng-if="data.href" class="nav-link text-white cursor-pointer" ui-sref="{{data.href}}" ui-sref-active="active">' +
+            //         '<span class="d-inline-block {{data.iconClass}}"></span>{{data.label}}' +
+            //         '</a>' +
+            //         '<div ng-if="!data.href" class="nav-link text-white cursor-pointer d-flex align-items-center">' +
+            //         '<span class="d-inline-block {{data.iconClass}}"></span>{{data.label}}'+
+            //         '<span class="flex-1"></span>' +
+            //         '<span class="caretCtrl caret-right" ng-if="data.children&&data.children.length"></span>' +
+            //         '</div>' +
+            //
+            //         //下级菜单
+            //
+            //
+            //         '</li>' +
+            //         '</ul>'
+            //     );
+            //     newEle = ele.find('li');
+            // };
 
             //根据激活的路由初始化展开的部分
             var activeShow=function () {
@@ -102,20 +130,20 @@ angular.module('gSide', []).directive('gSide', function ($compile, $timeout) {
             var watchData = sp.$watch('sideConfigData', function (p1) {//当数据传入时执行
                 if (p1) {
                     //构建html模板
-                    forAppendElement(ele, 'sideConfigData', 1);//构建一个
-                    var dataDept = 2;//计算出导航数据的最大深度
-                    angular.forEach(p1, function (v) {
-                        var str = JSON.stringify(v),//转为字符串
-                            stopIndex = str.indexOf(']') > 0 ? str.indexOf(']') : undefined,//根据数组的 [ 筛选有效的深度
-                            patternArr = str.substring(0, stopIndex).match(/\[/g),
-                            dept = (patternArr ? patternArr.length : 0) + 3;
-                        dataDept = dept > dataDept ? dept : dataDept;
-                    });
-                    for (var i = 2; i < dataDept; i++) {//根据数据的深度去构建对应的模板
-                        forAppendElement(newEle, 'data1.children', i, 'hidden', attr.type==='right'?'position-right':'');
-                    }
-
-                    $compile(ele.contents())(sp);//append的元素需要compile
+                    // forAppendElement(ele, 'sideConfigData', 1);//构建一个
+                    // var dataDept = 2;//计算出导航数据的最大深度
+                    // angular.forEach(p1, function (v) {
+                    //     var str = JSON.stringify(v),//转为字符串
+                    //         stopIndex = str.indexOf(']') > 0 ? str.indexOf(']') : undefined,//根据数组的 [ 筛选有效的深度
+                    //         patternArr = str.substring(0, stopIndex).match(/\[/g),
+                    //         dept = (patternArr ? patternArr.length : 0) + 3;
+                    //     dataDept = dept > dataDept ? dept : dataDept;
+                    // });
+                    // for (var i = 2; i < dataDept; i++) {//根据数据的深度去构建对应的模板
+                    //     forAppendElement(newEle, 'data.children', i, 'hidden', attr.type==='right'?'position-right':'');
+                    // }
+                    //
+                    // $compile(ele.contents())(sp);//append的元素需要compile
 
                     $timeout(function () {//compile后执行
                         if(attr.type!=='right'){
