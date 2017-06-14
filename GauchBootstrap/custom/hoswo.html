@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap</title>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="test/index.css">-->
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="test/angular.js"></script>
+    <script src="test/angular-ui-router.js"></script>
+    <script src="test/howso-sideNav.js"></script>
+</head>
+<body ng-controller="myCtrl">
+<h1>GauchBootstrap</h1>
+<div class="container-fluid clearfix p-0">
+    <div class="float-left">
+        <hoswo-sidenav config-data="sideConfigData"></hoswo-sidenav>
+    </div>
+    <div class="float-left text-center" ui-view>
+
+    </div>
+</div>
+</body>
+<script src="howso.js"></script>
+</html>
