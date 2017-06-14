@@ -21,17 +21,17 @@ angular.module('hoswoSidenav', [])
         //实现html模板，以利用ngInclude和ngRepeat实现树形结构数据的递归来构建html
         //因为ngRepeat的主体不一，所以不能和下面的合并，使用单一的模板
         tpl.put('hoswoSideNavTpl.html',
-            '<li class="nav-item dropdown {{data.class}} bg-primary" ng-repeat="data in data.children track by $index">' +
-            '<a ng-if="data.href" class="nav-link text-white cursor-pointer" ui-sref="{{data.href}}" ui-sref-active="active">' +
-            '<span class="d-inline-block {{data.iconClass}}"></span>{{data.label}}' +
+            '<li class="list-unstyled {{data.class}} bg-primary" ng-repeat="data in data.children track by $index">' +
+            '<a ng-if="data.href" class="bg-primary cursor-pointer d-block" ui-sref="{{data.href}}" ui-sref-active="active">' +
+            '<span ng-if="data.iconClass" class="d-inline-block {{data.iconClass}}"></span>{{data.label}}' +
             '</a>' +
-            '<div ng-if="!data.href" class="nav-link text-white cursor-pointer d-flex align-items-center">' +
-            '<span class="d-inline-block {{data.iconClass}}"></span>{{data.label}}' +
+            '<div ng-if="!data.href" class="cursor-pointer d-flex align-items-center">' +
+            '<span ng-if="data.iconClass" class="d-inline-block {{data.iconClass}}"></span>{{data.label}}' +
             '<span class="flex-1"></span>' +
             '<span class="caretCtrl caret-right" ng-if="data.children&&data.children.length"></span>' +
             '</div>' +
 
-            '<ul ng-if="data.children" class="nav flex-column {{positionRight}}" hidden ng-include="hoswoSideNavTpl"></ul>' +
+            '<ul ng-if="data.children" class="{{positionRight}}" hidden ng-include="hoswoSideNavTpl"></ul>' +
 
             '</li>'
         );
@@ -42,18 +42,18 @@ angular.module('hoswoSidenav', [])
             template: '<div class="g-side">' +
             '<link rel="stylesheet" href="test/howso-sideNav.css">' +
 
-            '<ul class="nav flex-column">' +
-            '<li class="nav-item dropdown {{data.class}} bg-primary" ng-repeat="data in data track by $index">' +
-            '<a ng-if="data.href" class="nav-link text-white cursor-pointer" ui-sref="{{data.href}}" ui-sref-active="active">' +
-            '<span class="d-inline-block {{data.iconClass}}"></span>{{data.label}}' +
+            '<ul>' +
+            '<li class="list-unstyled {{data.class}} bg-primary" ng-repeat="data in data track by $index">' +
+            '<a ng-if="data.href" class="bg-primary cursor-pointern d-block" ui-sref="{{data.href}}" ui-sref-active="active">' +
+            '<span ng-if="data.iconClass" class="d-inline-block {{data.iconClass}}"></span>{{data.label}}' +
             '</a>' +
-            '<div ng-if="!data.href" class="nav-link text-white cursor-pointer d-flex align-items-center">' +
-            '<span class="d-inline-block {{data.iconClass}}"></span>{{data.label}}' +
+            '<div ng-if="!data.href" class="cursor-pointer d-flex align-items-center">' +
+            '<span ng-if="data.iconClass" class="d-inline-block {{data.iconClass}}"></span>{{data.label}}' +
             '<span class="flex-1"></span>' +
             '<span class="caretCtrl caret-right" ng-if="data.children&&data.children.length"></span>' +
             '</div>' +
 
-            '<ul ng-if="data.children" class="nav flex-column {{positionRight}}" hidden ng-include="hoswoSideNavTpl"></ul>' +
+            '<ul ng-if="data.children" class="{{positionRight}}" hidden ng-include="hoswoSideNavTpl"></ul>' +
 
             '</li>'+
             '</ul>' +
@@ -73,7 +73,7 @@ angular.module('hoswoSidenav', [])
                 //根据激活的路由初始化展开的部分
                 var activeShow = function () {
                     var allShowEle = $('.active').parents().filter(function () {
-                        if (this.nodeName === 'UL' && this.className.indexOf('hidden') > -1) {
+                        if (this.nodeName === 'UL') {
                             return true
                         }
                     });
