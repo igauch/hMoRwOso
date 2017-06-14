@@ -14,7 +14,7 @@
 //
 //依赖uirouter,可根据路由初始化到激活路由的导航
 //不限制导航的深度
-//TODO 暂时依赖简单修改的bootstrap4，已做CDN嵌入，无需再做引用
+//
 
 angular.module('hoswoSidenav', [])
     .run(['$templateCache', function (tpl) {
@@ -40,7 +40,6 @@ angular.module('hoswoSidenav', [])
         return {
             restrict: 'EA',
             template: '<div class="g-side">' +
-            '<link rel="stylesheet" href="test/howso-sideNav.css">' +
 
             '<ul>' +
             '<li class="list-unstyled {{data.class}} bg-primary" ng-repeat="data in data track by $index">' +
