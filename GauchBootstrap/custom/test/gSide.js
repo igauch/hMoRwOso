@@ -31,7 +31,7 @@ angular.module('gSide', [])
             '<span class="caretCtrl caret-right" ng-if="data.children&&data.children.length"></span>' +
             '</div>' +
 
-            '<ul ng-if="data.children" class="nav flex-column {{hidden}}"  ng-include="gSideTpl"></ul>' +
+            '<ul ng-if="data.children" class="nav flex-column {{hidden}} {{positionRight}}"  ng-include="gSideTpl"></ul>' +
 
             '</li>'
         );
@@ -43,7 +43,7 @@ angular.module('gSide', [])
             '<link rel="stylesheet" href="http://src.igauch.cn/GauchBootstrap.css">' +
 
             '<ul class="nav flex-column">' +
-            '<li class="nav-item dropdown {{data.class}} bg-primary side-{{$index+1}}" ng-repeat="data in data track by $index">' +
+            '<li class="nav-item dropdown {{data.class}} bg-primary" ng-repeat="data in data track by $index">' +
             '<a ng-if="data.href" class="nav-link text-white cursor-pointer" ui-sref="{{data.href}}" ui-sref-active="active">' +
             '<span class="d-inline-block {{data.iconClass}}"></span>{{data.label}}' +
             '</a>' +
@@ -121,8 +121,8 @@ angular.module('gSide', [])
                         activeShow();
                     }
                     if (attr.type === 'right' && target.nodeName.toUpperCase() === 'A') {
-                        sp.hidden='hidden';
                         // activeShowCtrl=true;
+                        angular.element('.g-side>ul').find('ul').hide();
                     }
                 });
 
