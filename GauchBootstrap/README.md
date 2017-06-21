@@ -1,3 +1,6 @@
+# 参考连接
+* [V4 官网](https://v4-alpha.getbootstrap.com/components/navs/)
+* [V4 中文文档](http://wiki.jikexueyuan.com/project/bootstrap4/migration/)
 # 对比V3
 #### 切换flexbox为默认布局的解决方案，所以要先了解好flexbox
 * 切换rem为默认单位
@@ -5,9 +8,10 @@
 * 放弃了对IE8, IE9, iOS 6的支持，加入了Android v5.0的浏览器和web视图的官方支持
 * 切换sass为预编译文件
 * 切换16px为字体默认大小
-* 放弃字体图标
+* 放弃了字体图标、panels面板、wells、Thumbnails缩略图
 * 在normalize的基础上重置了一些默认样式
 * 新增sm(<576px)栅格体系
+* 增加了对[tether.js](http://tether.io/)的依赖
 ### 类改变
 * 新增flexbox
     * d-flex\d-inline-flex\d-sm-flex等用来设置flex元素
@@ -75,6 +79,7 @@
 * btn-group-vertical:使按钮组垂直排列
 * well:使内容有凹陷显示或插图效果
 * invisible:设置属性visibility为hidden
+* container-fluid用于水平居中并设置一定的值给左右padding
 #### 一些常用的类集合
 - success、warning、error、danger、info等，这些类都是改变颜色、背景色等基本样式的，在很多元素上都有用到
     - 表格：直接在tr、td上使用active、success、warning、danger、info改变基本样式
@@ -88,9 +93,9 @@
     - 表单组：form-group-lg（增大的）
     - 输入框：input-sm（小的）
     - 按钮：btn-xs（超小的）
-* container-fluid宽度为100%的容器
 # 个人修改
 * 修改栅格系统为24份
 * 新增.hidden用以隐藏元素和与权重为important的[hidden]做对比使用
 * 新增几种手势控制类：cursor-pointer(手势光标)、cursor-wait(加载光标)、cursor-text(文本编辑光标)
 * v4官方删除了三角符号caret,但这里做了保持
+* 新增flex-1类，用来设置flex为1以实现自动宽度适应的栏布局
