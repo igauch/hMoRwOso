@@ -4,7 +4,7 @@
 /**
  * Created by twj94 on 2017/6/6.
  */
-angular.module('myApp', ['ui.router', 'hoswoSidenav'])
+angular.module('myApp', ['ui.router', 'howsoSidenav'])
     .config(function ($controllerProvider, $urlRouterProvider, $stateProvider) {
         $urlRouterProvider.when('', '/howso');
 

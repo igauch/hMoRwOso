@@ -40,7 +40,7 @@
 .g-side div,.g-side a{
     padding: 8px 16px;
 }
-.g-side a:hover,.g-side div:hover,.g-side a:active,.g-side div:active,.g-side a.active{
+.g-side a:hover,.g-side div:hover,.g-side a:active,.g-side div:active,.g-side a.active,.g-side div.active{
     background-color: #286090;
     text-decoration: none;
     color: #fff;
