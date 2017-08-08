@@ -1,3 +1,8 @@
+<!--
+
+通过三个不同的标签区分功能
+
+-->
 <template>
   <div id="app">
     <img src="./assets/logo.png">

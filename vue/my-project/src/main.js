@@ -26,5 +26,8 @@ new Vue({
    * JS的import到底导入的是什么？
    */
   template: '<App/>',
+  /**
+   * 声明要注册的组件
+   */
   components: { App }
 });
