@@ -22,6 +22,10 @@
 
 <script>
 export default {
+  /**
+   * 允许组件模板递归地调用自身。注意，组件在全局用 Vue.component() 注册时，全局 ID 自动作为组件的 name。
+   * 指定 name 选项的另一个好处是便于调试。有名字的组件有更友好的警告信息。
+   */
   name: 'hello',
   data () {
     return {

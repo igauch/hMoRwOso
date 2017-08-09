@@ -30,6 +30,7 @@ new Vue({
   /**
    * 提供一个在页面上已存在的 DOM 元素作为 Vue 实例的挂载目标。可以是 CSS 选择器，也可以是一个 HTMLElement 实例
    * 这里的#app不是App.vue里的，是index.html里的
+   * 挂载元素会被 Vue 生成的 DOM 替换
    */
   el: '#app',
   /**
