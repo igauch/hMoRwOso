@@ -15,7 +15,14 @@ import Vue from 'vue'
  * 也可以去掉vue的后缀
  */
 import App from './App.vue'
-import router from './router'
+import { router } from './router'
+import axios from 'axios'
+
+/**
+ * 扩展Vue原型链以在每个Vue实例、组件中使用
+ * 因为Vue组件和实例的this都指向Vue，所以使用时直接this.$http
+ */
+Vue.prototype.$http=axios;
 
 /**
  * @type {boolean}
@@ -23,7 +30,7 @@ import router from './router'
  */
 Vue.config.productionTip = false;
 
-console.log(App);
+// console.log(App);
 
 /* eslint-disable no-new */
 new Vue({
@@ -48,8 +55,8 @@ new Vue({
    * 声明要注册的组件
    * App就是从App.vue导进来的App
    * ？？？看起来有点怪异？？？
-   * 毫无疑问，vue对此绝对做了什么手脚，看下此页第15行打印出来的东西
-   *
+   * 毫无疑问，vue对此绝对做了什么手脚，打印出App看看
+   * 应该是被vue-loader处理了
    * 此处为{'app':App}的简写,键值app作为组件名可变
    */
   components: { App }
