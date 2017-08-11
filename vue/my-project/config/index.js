@@ -1,5 +1,5 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
-var path = require('path')
+var path = require('path');
 
 module.exports = {
   build: {
@@ -30,7 +30,7 @@ module.exports = {
     proxyTable: {
       // proxy all requests starting with /api to jsonplaceholder
       '/api': {
-        target: 'http://localhost:8081/deeplan.son.mro/',
+        target: 'http://192.168.10.181:8081/deeplan.son.mro/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
@@ -44,4 +44,4 @@ module.exports = {
     // just be aware of this issue when enabling this option.
     cssSourceMap: false
   }
-}
+};
