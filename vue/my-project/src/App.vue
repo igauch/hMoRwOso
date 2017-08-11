@@ -30,7 +30,6 @@ export default {
 
 -->
 <style lang="scss">
-  @import "assets/style/custom_bootstrap_var";
   @import "~bootstrap/scss/bootstrap.scss";
 
   html{

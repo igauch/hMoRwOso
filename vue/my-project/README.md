@@ -8,6 +8,9 @@
 # install dependencies
 npm install
 
+# 替换bootstrap官方变量为你的变量
+npm run customBootstrap
+
 # serve with hot reload at localhost:8080
 npm run dev
 
@@ -19,7 +22,3 @@ npm run build --report
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-
-### 恢复bootstrap的变量
-\# node build/copyFile.js

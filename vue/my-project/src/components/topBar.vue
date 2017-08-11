@@ -29,7 +29,6 @@
 </script>
 
 <style lang="scss">
-  /*@import "../src/assets/style/custom_bootstrap_var";*/
   @import "~bootstrap/scss/bootstrap.scss";
 
   $header-log-size:32px;
