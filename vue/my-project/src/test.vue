@@ -1,0 +1,11 @@
+<template>
+  <div>
+    <h2>我是子组件的标题</h2>
+    <slot>
+      只有在没有要分发的内容时才会显示。
+    </slot>
+  </div>
+</template>
+https://cn.vuejs.org/v2/guide/components.html#使用-Slot-分发内容
+https://www.zhihu.com/question/37548226?sort=created
+http://blog.csdn.net/sinat_17775997/article/details/52484072

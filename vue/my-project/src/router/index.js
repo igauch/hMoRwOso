@@ -6,6 +6,7 @@ import Router from 'vue-router'
  */
 import login from '@/components/login'
 import main from '@/components/main'
+import test from '../test.vue'
 
 /**
  * 安装插件
@@ -42,6 +43,11 @@ export let router = new Router({
       path:'/',
       name:'main',
       component: main
+    },
+    {
+      path:'/test',
+      name:'test',
+      component: test
     }
   ]
 });
