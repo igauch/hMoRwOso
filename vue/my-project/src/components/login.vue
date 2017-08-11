@@ -47,7 +47,7 @@
       login: function () {
         if(this.userName){
           sessionStorage.setItem('userName',this.userName);
-          this.$router.push('overview');
+          this.$router.push('/');
         }
       }
     }

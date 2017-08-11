@@ -5,7 +5,7 @@ import Router from 'vue-router'
  * build文件夹里的webpack.base.conf.js里面的resolve里面的alias
  */
 import login from '@/components/login'
-import overview from '@/components/overview'
+import main from '@/components/main'
 
 /**
  * 安装插件
@@ -39,9 +39,9 @@ export let router = new Router({
       component: login
     },
     {
-      path:'/overview',
-      name:'overview',
-      component: overview
+      path:'/',
+      name:'main',
+      component: main
     }
   ]
 });

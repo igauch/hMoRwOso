@@ -6,17 +6,9 @@ https://vue-loader.vuejs.org/zh-cn/start/spec.html
 -->
 <template>
   <div id="app">
-    <div class="text-white header" v-if="$route.path!=='/login'">
-      <div class="container-fluid">
-        <i class="iconfont icon-yidong align-middle mr-2"></i>
-        <span class="font-weight-bold align-middle align-middle">移动通信网络智能分析平台</span>
-        <div class="float-right">
-          <span>欢迎你，{{userName}}</span>
-          <i class="iconfont icon-loginout align-middle" @click="loginOut"></i>
-        </div>
-      </div>
-    </div>
-    <router-view></router-view>
+    <router-view>
+
+    </router-view>
   </div>
 </template>
 
@@ -27,18 +19,7 @@ https://vue-loader.vuejs.org/zh-cn/start/spec.html
 -->
 <script>
 export default {
-  name: 'app',
-  data(){
-    return{
-      userName:sessionStorage.getItem('userName')
-    }
-  },
-  methods:{
-    loginOut:function () {
-      sessionStorage.setItem('userName',null);
-      this.$router.push('/login');
-    }
-  }
+  name: 'app'
 }
 </script>
 
@@ -57,19 +38,5 @@ export default {
   }
   html, body, #app {
     height: 100%;
-  }
-
-  $header-log-size:32px;
-  .header{
-    background: linear-gradient(to right, $brand-primary, lighten($brand-primary,15%));
-    .icon-yidong{
-      font-size: $header-log-size;
-    }
-    .font-weight-bold{
-      font-size: 20px;
-    }
-    div.float-right{
-      line-height: 1.5*$header-log-size;
-    }
   }
 </style>
