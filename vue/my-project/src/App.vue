@@ -31,6 +31,7 @@ export default {
 -->
 <style lang="scss">
   @import "~bootstrap/scss/bootstrap.scss";
+  @import "~element-ui/lib/theme-default/index.css";
 
   html{
     font-size: 14px;

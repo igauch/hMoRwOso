@@ -6,6 +6,3 @@
     </slot>
   </div>
 </template>
-https://cn.vuejs.org/v2/guide/components.html#使用-Slot-分发内容
-https://www.zhihu.com/question/37548226?sort=created
-http://blog.csdn.net/sinat_17775997/article/details/52484072

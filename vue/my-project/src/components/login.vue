@@ -23,15 +23,10 @@
         <input type="button" class="btn btn-primary" value="登录" @click="login">
       </div>
     </form>
-    <test>
-      <p>这是一些初始内容</p>
-      <p>这是更多的初始内容</p>
-    </test>
   </div>
 </template>
 
 <script>
-  import test from '../test.vue'
   export default {
     /**
      * 允许组件模板递归地调用自身。注意，组件在全局用 Vue.component() 注册时，全局 ID 自动作为组件的 name。
@@ -55,8 +50,7 @@
           this.$router.push('/');
         }
       }
-    },
-    component:test
+    }
   }
 </script>
 

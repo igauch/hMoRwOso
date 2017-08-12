@@ -11,6 +11,21 @@
  * 这些比较怪异的模式应该是被node、webpack等处理过
  */
 import Vue from 'vue'
+import {
+  Menu,
+  Submenu,
+  MenuItem,
+  MenuItemGroup,
+  RadioGroup,
+  RadioButton,
+  Tooltip } from 'element-ui'
+Vue.use(Menu);
+Vue.use(Submenu);
+Vue.use(MenuItem);
+Vue.use(MenuItemGroup);
+Vue.use(RadioGroup);
+Vue.use(RadioButton);
+Vue.use(Tooltip);
 /**
  * 也可以去掉vue的后缀
  */
