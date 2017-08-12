@@ -14,14 +14,14 @@
 <script>
   export default {
     name: 'topBar',
-    data(){
-      return{
-        userName:sessionStorage.getItem('userName')
+    data() {
+      return {
+        userName: sessionStorage.getItem('userName')
       }
     },
-    methods:{
-      loginOut:function () {
-        sessionStorage.setItem('userName',null);
+    methods: {
+      loginOut: function () {
+        sessionStorage.setItem('userName', null);
         this.$router.push('/login');
       }
     }
@@ -32,17 +32,17 @@
   //TODO 会多次导入
   @import "~bootstrap/scss/bootstrap.scss";
 
-  $header-log-size:32px;
-  .header{
-    background: linear-gradient(to right, $brand-primary, lighten($brand-primary,15%));
-  .icon-yidong{
-    font-size: $header-log-size;
-  }
-  .font-weight-bold{
-    font-size: 20px;
-  }
-  div.float-right{
-    line-height: 1.5*$header-log-size;
-  }
+  $header-log-size: 32px;
+  .header {
+    background: linear-gradient(to right, $brand-primary, lighten($brand-primary, 15%));
+    .icon-yidong {
+      font-size: $header-log-size;
+    }
+    .font-weight-bold {
+      font-size: 20px;
+    }
+    div.float-right {
+      line-height: 1.5*$header-log-size;
+    }
   }
 </style>
