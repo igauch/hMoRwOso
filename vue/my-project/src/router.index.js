@@ -6,7 +6,7 @@ import Router from 'vue-router'
  */
 import login from '@/components/login'
 import main from '@/components/main'
-import test from '../test.vue'
+import test from './test.vue'
 
 /**
  * 安装插件

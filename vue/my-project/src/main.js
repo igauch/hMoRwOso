@@ -1,6 +1,7 @@
 // The Vue build version to load with the `import` command
 /**
- * webpack加紧学习
+ * TODO webpack加紧学习
+ * TODO jquery插件
  */
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 /**
@@ -30,7 +31,7 @@ Vue.use(Tooltip);
  * 也可以去掉vue的后缀
  */
 import App from './App.vue'
-import { router } from './router'
+import { router } from './router.index'
 import axios from 'axios'
 
 /**
