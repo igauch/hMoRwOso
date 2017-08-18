@@ -31,7 +31,7 @@
 <style lang="scss">
   //TODO 会多次导入
   @import "~bootstrap/scss/bootstrap.scss";
-
+  $brand-primary:#0885fd;
   $header-log-size: 32px;
   .header {
     background: linear-gradient(to right, $brand-primary, lighten($brand-primary, 15%));
