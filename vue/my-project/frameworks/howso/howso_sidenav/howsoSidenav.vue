@@ -12,7 +12,7 @@
 </template>
 
 <script>
-
+//  import $ from 'jquery'
   //  根据激活的路由初始化展开的部分
   //  let activeShow = function () {
   //    let allShowEle = $root.filter('.router-link-active').parents().filter(function () {
@@ -34,45 +34,70 @@
         name: 'howsoSidenavItem',
         template:
           `<li class="list-unstyled bg-primary">
-            <a v-if="data.href" class="bg-primary cursor-pointern d-block" :to="data.href" @click="itemClick">
+            <a v-if="data.href" class="bg-primary cursor-pointern d-block" :to="data.href" @click.self="itemClick(data,$event)">
               <span v-if="data.iconClass" class="d-inline-block" :class="data.iconClass"></span>{{data.label}}
             </a>
-            <div v-if="!data.href" class="cursor-pointer d-flex align-items-center"  @click="itemClick">
+            <div v-if="!data.href" class="cursor-pointer d-flex align-items-center"  @click.self="itemClick(data,$event)">
               <span v-if="data.iconClass" class="d-inline-block" :class="data.iconClass"></span>
               <span class="menuTitle">{{data.label}}</span>
               <span class="flex-1"></span>
               <span class="caretCtrl caret-right" v-if="data.children&&data.children.length"></span>
             </div>
-            <ul v-if="data.children" :class="align" hidden>
+            <ul v-if="data.children||data.isFolder" :class="[align, data.deepClass]">
               <howso-sidenav-item :data="data" v-for="(data,index) in data.children" :key="index"></howso-sidenav-item>
             </ul>
            </li>`,
         props:['data','align'],
         methods: {
-          itemClick: function ($rootEle) {
-            let $activeLinkEle=$rootEle.getElementsByClassName('router-link-active');
-            console.log($rootEle.nodeChilds);
+          itemClick: function (data,e) {
+            console.log(e.target);
+//            let deepNum=data.deepClass.replace(/[^\d]/,'');
+            $('.'+data.deepClass).not($(e.target).next()).slideToggle();
+//            data.isFolder=false;
           }
         }
       }
     },
     props: ['navListData', 'align'],
-    data(){
-      return {
-
-      }
-    },
+//    data(){
+//      return {
+//
+//      }
+//    },
     methods:{
       expandByActiveRouter(e){
         console.log(e);
       }
     },
     created(){
-      console.log(this.navListData);
+      let activePath=this.$router.path;
+
+      let deep=0, //记录当前循环的数据深度
+          activePathDeep=0;//当前路由的数据深度
+      /**
+       * 格式化传进来的导航数据，就是增加一些字段以数据驱动DOM行为
+       * @param data 遍历的数组
+       */
+      let initNavData=function(data){
+        deep++;
+        data=data.map(function (v,k) {
+          v.path===activePath&&(activePath=deep);
+          if(!v.children){
+            deep=(k===data.length-1) ? (deep-1) : deep;
+            return v;
+          }
+          v.isFolder=Boolean(deep);
+          v.deepClass='howsoSideNavUl'+deep;
+          initNavData(v.children);
+          deep=(k===data.length-1) ? (deep-1) : deep;
+          return v;
+        });
+      };
+      initNavData(this.navListData);
+      console.log(this.navListData,this.$el);
     },
     mounted(){
       this.expandByActiveRouter(this.$el);
-      console.log(this.navListData);
     }
   }
 </script>
