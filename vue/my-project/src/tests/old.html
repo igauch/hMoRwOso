@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+  <script src="../../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <div>{{bar}}</div>
+  <my-comps :list="list"></my-comps>
+</div>
+<script>
+  Vue.component('my-comp', {
+    template:
+      `
+      <li @click="increment">{{list.label}}<ul>
+      <my-comp :list="value"  v-for="(value,key) in list.children" :key="key"></my-comp>
+</ul></li>
+      `,
+    props: ['list'],
+    data(){
+      return{
+//        copyList:this.list   @iup="increment"
+      }
+    },
+    methods: {
+      increment: function() {
+        this.list.label='6666';
+//        this.$emit('update:list', this.list);
+//        this.$emit('iup',this.copyList);
+      }
+    }
+  });
+
+
+
+  Vue.component('my-comps', {
+    template:
+      `
+      <ul>
+      <my-comp :list="value"  v-for="(value,key) in list" :key="key"></my-comp>
+       </ul>
+      `,
+    props: ['list'],
+    data(){
+      return{
+//        copyList:this.list   @iup="increment"
+      }
+    },
+    methods: {
+      increment: function() {
+        this.$emit('update:list', this.list);
+      }
+    }
+  });
+
+
+  new Vue({
+    el: '#app',
+    data: {bar: 0,
+      text:'text',
+      isButtonDisabled:true,
+    list:[
+      {
+        "label": "MRO分析",
+        "class": "menu",
+        "iconClass": "icon1",
+        children: [
+          {
+            "label": "网络覆盖概况",
+            "class": "subMenu1",
+            "iconClass": "cirIcon",
+            "path": 'networkCoverOverview',
+            children:[{
+              "label": "弱覆盖分析",
+              "class": "subMenu2",
+              "path": 'weakCoverAnalysis',
+              "children": [
+                {
+                  "label": "重叠覆盖度分析",
+                  "class": "subMenu2",
+                  "path": 'overlappingCoverAnalysis'
+                },
+                {
+                  "label": "过覆盖分析",
+                  "class": "subMenu2",
+                  "path": 'overCoverAnalysis'
+                },
+                {
+                  "label": "弱覆盖分析",
+                  "class": "subMenu2",
+                  "path": 'weakCoverAnalysis',
+                  children:[{
+                    "label": "弱覆盖分析",
+                    "class": "subMenu2",
+                    "path": 'weakCoverAnalysis'
+                  }]
+                }
+              ]
+            }]
+          },
+          {
+            "label": "网络覆盖地理化",
+            "class": "subMenu1",
+            "iconClass": "cirIcon",
+            "path": 'networkCoverGeography'
+          },
+          {
+            "label": "网络覆盖分析",
+            "class": "subMenu1",
+            "iconClass": "cirIcon",
+            "children": [
+              {
+                "label": "重叠覆盖度分析",
+                "class": "subMenu2",
+                "path": 'overlappingCoverAnalysis',
+                "children": [
+                  {
+                    "label": "重叠覆盖度分析",
+                    "class": "subMenu2",
+                    "path": 'overlappingCoverAnalysis'
+                  },
+                  {
+                    "label": "过覆盖分析",
+                    "class": "subMenu2",
+                    "path": 'overCoverAnalysis'
+                  },
+                  {
+                    "label": "弱覆盖分析",
+                    "class": "subMenu2",
+                    "path": 'weakCoverAnalysis',
+                    children:[{
+                      "label": "弱覆盖分析",
+                      "class": "subMenu2",
+                      "path": 'weakCoverAnalysis'
+                    }]
+                  }
+                ]
+              },
+              {
+                "label": "过覆盖分析",
+                "class": "subMenu2",
+                "path": 'overCoverAnalysis'
+              },
+              {
+                "label": "弱覆盖分析",
+                "class": "subMenu2",
+                "path": 'weakCoverAnalysis',
+                children:[{
+                  "label": "弱覆盖分析",
+                  "class": "subMenu2",
+                  "path": 'weakCoverAnalysis'
+                }]
+              }
+            ]
+          }
+        ]
+      }
+    ]}
+  });
+</script>
+</body>
+</html>

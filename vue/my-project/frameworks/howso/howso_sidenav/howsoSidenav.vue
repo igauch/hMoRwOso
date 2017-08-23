@@ -51,9 +51,9 @@
         props:['data','align'],
         methods: {
           itemClick: function (data,e) {
-            console.log(this.data);
-            Vue.set(this.data,'isFolder',false);
-            console.log(this.data);
+            console.log(this.data.isFolder);
+            this.data.isFolder!==undefined&&Vue.set(this.data,'isFolder',!this.data.isFolder);
+            console.log(this.data.isFolder);
 //            let deepNum=data.deepClass.replace(/[^\d]/,'');
 //            data.isFolder=false;
           }
