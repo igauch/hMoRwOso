@@ -12,6 +12,7 @@
 </template>
 
 <script>
+  import Vue from 'vue'
 //  import $ from 'jquery'
   //  根据激活的路由初始化展开的部分
   //  let activeShow = function () {
@@ -34,25 +35,26 @@
         name: 'howsoSidenavItem',
         template:
           `<li class="list-unstyled bg-primary">
-            <a v-if="data.href" class="bg-primary cursor-pointern d-block" :to="data.href" @click.self="itemClick(data,$event)">
+            <a v-if="data.href" class="bg-primary cursor-pointern d-block" :to="data.href" @click="itemClick(data,$event)">
               <span v-if="data.iconClass" class="d-inline-block" :class="data.iconClass"></span>{{data.label}}
             </a>
-            <div v-if="!data.href" class="cursor-pointer d-flex align-items-center"  @click.self="itemClick(data,$event)">
+            <div v-if="!data.href" class="cursor-pointer d-flex align-items-center"  @click="itemClick(data,$event)">
               <span v-if="data.iconClass" class="d-inline-block" :class="data.iconClass"></span>
               <span class="menuTitle">{{data.label}}</span>
               <span class="flex-1"></span>
               <span class="caretCtrl caret-right" v-if="data.children&&data.children.length"></span>
             </div>
-            <ul v-if="data.children||data.isFolder" :class="[align, data.deepClass]">
+            <ul v-show="data.children&&data.isFolder" :class="[align, data.deepClass]">
               <howso-sidenav-item :data="data" v-for="(data,index) in data.children" :key="index"></howso-sidenav-item>
             </ul>
            </li>`,
         props:['data','align'],
         methods: {
           itemClick: function (data,e) {
-            console.log(e.target);
+            console.log(this.data);
+            Vue.set(this.data,'isFolder',false);
+            console.log(this.data);
 //            let deepNum=data.deepClass.replace(/[^\d]/,'');
-            $('.'+data.deepClass).not($(e.target).next()).slideToggle();
 //            data.isFolder=false;
           }
         }
@@ -65,6 +67,10 @@
 //      }
 //    },
     methods:{
+      /**
+       *
+       * @param e
+       */
       expandByActiveRouter(e){
         console.log(e);
       }
@@ -94,7 +100,6 @@
         });
       };
       initNavData(this.navListData);
-      console.log(this.navListData,this.$el);
     },
     mounted(){
       this.expandByActiveRouter(this.$el);
