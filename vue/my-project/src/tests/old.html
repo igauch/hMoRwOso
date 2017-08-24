@@ -11,28 +11,32 @@
 <body>
 <div id="app">
   <div>{{bar}}</div>
-  <my-comps :list="list"></my-comps>
+  <my-comps :lists="list"></my-comps>
 </div>
 <script>
   Vue.component('my-comp', {
     template:
       `
-      <li @click="increment">{{list.label}}<ul>
-      <my-comp :list="value"  v-for="(value,key) in list.children" :key="key"></my-comp>
+      <li @click="increment">{{obj.label}}{{obj.la}}<ul>
+      <my-comp :lists="value"  v-for="(value,key) in obj.children" :key="key"></my-comp>
 </ul></li>
       `,
-    props: ['list'],
+    props: ['lists'],
     data(){
       return{
-//        copyList:this.list   @iup="increment"
+        obj : this.lists
       }
     },
     methods: {
       increment: function() {
-        this.list.label='6666';
+//        this.obj.la='8989898989';
+        this.obj.la&&Vue.set(this.obj,'la',656565656);
 //        this.$emit('update:list', this.list);
 //        this.$emit('iup',this.copyList);
       }
+    },
+    created(){
+      console.log(this);
     }
   });
 
@@ -42,18 +46,22 @@
     template:
       `
       <ul>
-      <my-comp :list="value"  v-for="(value,key) in list" :key="key"></my-comp>
+      <li>{{list[0]}}</li>
+      <my-comp :lists="value"  v-for="(value,key) in list" :key="key"></my-comp>
        </ul>
       `,
-    props: ['list'],
+    props: ['lists'],
     data(){
       return{
+        list:this.lists
 //        copyList:this.list   @iup="increment"
       }
     },
     methods: {
       increment: function() {
-        this.$emit('update:list', this.list);
+//        this.list=9999;
+        Vue.set(this.list[0],'label',9999);
+//        this.$emit('update:list', this.list);
       }
     }
   });

@@ -1,8 +1,9 @@
 <template>
-  <sidenav :navListData="navListDatas"></sidenav>
+  <sidenav :datas="navListDatas"></sidenav>
 </template>
 
 <script>
+  import Vue from 'vue'
   import sidenav from "../frameworks/howso/howso_sidenav/howsoSidenav.vue";
   export default {
     name:'sideNav',
@@ -107,6 +108,9 @@
           }
         ]
       }
+    },
+    methods:{
+
     }
   }
 </script>

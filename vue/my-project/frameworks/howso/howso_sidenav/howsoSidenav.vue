@@ -6,7 +6,7 @@
     一个常见错误是试图在父组件模板内将一个指令绑定到子组件的属性/方法
 
     -->
-    <howso-sidenav-item :data="data" :align="align" v-for="(data , index) in navListData"
+    <howso-sidenav-item :datas="data" :align="align" v-for="(data , index) in navListData"
                         :key="index"></howso-sidenav-item>
   </ul>
 </template>
@@ -45,27 +45,30 @@
               <span class="caretCtrl caret-right" v-if="data.children&&data.children.length"></span>
             </div>
             <ul v-show="data.children&&data.isFolder" :class="[align, data.deepClass]">
-              <howso-sidenav-item :data="data" v-for="(data,index) in data.children" :key="index"></howso-sidenav-item>
+              <howso-sidenav-item :datas="data" v-for="(data,index) in data.children" :key="index"></howso-sidenav-item>
             </ul>
            </li>`,
-        props:['data','align'],
+        props:['datas','align'],
+        data(){
+          return{
+            data:this.datas
+          }
+        },
         methods: {
           itemClick: function (data,e) {
-            console.log(this.data.isFolder);
             this.data.isFolder!==undefined&&Vue.set(this.data,'isFolder',!this.data.isFolder);
-            console.log(this.data.isFolder);
 //            let deepNum=data.deepClass.replace(/[^\d]/,'');
 //            data.isFolder=false;
           }
         }
       }
     },
-    props: ['navListData', 'align'],
-//    data(){
-//      return {
-//
-//      }
-//    },
+    props: ['datas','align'],
+    data(){
+      return {
+        navListData:this.datas
+      }
+    },
     methods:{
       /**
        *
@@ -92,7 +95,7 @@
             deep=(k===data.length-1) ? (deep-1) : deep;
             return v;
           }
-          v.isFolder=Boolean(deep);
+          Vue.set(v,'isFolder',Boolean(deep));
           v.deepClass='howsoSideNavUl'+deep;
           initNavData(v.children);
           deep=(k===data.length-1) ? (deep-1) : deep;
