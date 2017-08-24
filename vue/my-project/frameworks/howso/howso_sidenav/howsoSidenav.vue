@@ -6,7 +6,7 @@
     一个常见错误是试图在父组件模板内将一个指令绑定到子组件的属性/方法
 
     -->
-    <howso-sidenav-item :datas="data" :align="align" v-for="(data , index) in navListData"
+    <howso-sidenav-item :activePathDeeps="activePathDeep" :datas="data" :align="align" v-for="(data , index) in navListData"
                         :key="index"></howso-sidenav-item>
   </ul>
 </template>
@@ -44,29 +44,32 @@
               <span class="flex-1"></span>
               <span class="caretCtrl caret-right" v-if="data.children&&data.children.length"></span>
             </div>
-            <ul v-show="data.children&&data.isFolder" :class="[align, data.deepClass]">
-              <howso-sidenav-item :datas="data" v-for="(data,index) in data.children" :key="index"></howso-sidenav-item>
+            <ul v-show="data.children&&(!data.isFolder||data.deep>activePathDeep)" :class="[align, data.deepClass]">
+              <howso-sidenav-item :activePathDeeps="activePathDeep" :datas="data" v-for="(data,index) in data.children" :key="index"></howso-sidenav-item>
             </ul>
            </li>`,
-        props:['datas','align'],
+        props:['datas','align','activePathDeeps'],
         data(){
           return{
-            data:this.datas
+            data:this.datas,
+            activePathDeep:this.activePathDeeps
           }
         },
         methods: {
-          itemClick: function (data,e) {
+          itemClick: function () {
             this.data.isFolder!==undefined&&Vue.set(this.data,'isFolder',!this.data.isFolder);
-//            let deepNum=data.deepClass.replace(/[^\d]/,'');
-//            data.isFolder=false;
           }
         }
       }
     },
     props: ['datas','align'],
+    /**
+     * 只有data里的数据才具有响应式特性，且不传递到其下级数据，下级数据的修改需要使用set或可被VUE观测到的方法
+     */
     data(){
       return {
-        navListData:this.datas
+        navListData:this.datas,
+        activePathDeep:0//当前路由的数据深度
       }
     },
     methods:{
@@ -81,22 +84,24 @@
     created(){
       let activePath=this.$router.path;
 
-      let deep=0, //记录当前循环的数据深度
-          activePathDeep=0;//当前路由的数据深度
+      let deep=0; //记录当前循环的数据深度
       /**
        * 格式化传进来的导航数据，就是增加一些字段以数据驱动DOM行为
        * @param data 遍历的数组
        */
-      let initNavData=function(data){
+      let initNavData=(data)=>{
         deep++;
-        data=data.map(function (v,k) {
-          v.path===activePath&&(activePath=deep);
+        data=data.map( (v,k) => {
+          v.path===activePath&&(this.activePathDeep=deep);
           if(!v.children){
             deep=(k===data.length-1) ? (deep-1) : deep;
             return v;
           }
+          /**
+           * 只要改变且关于视图刷新的无论何时都要使用那些可以被VUE观察到的方法
+           */
           Vue.set(v,'isFolder',Boolean(deep));
-          v.deepClass='howsoSideNavUl'+deep;
+          Vue.set(v,'deep',deep);
           initNavData(v.children);
           deep=(k===data.length-1) ? (deep-1) : deep;
           return v;

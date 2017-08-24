@@ -1,61 +1,116 @@
 <template>
-  <div>
-    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-      <el-radio-button :label="false">展开</el-radio-button>
-      <el-radio-button :label="true">收起</el-radio-button>
-    </el-radio-group>
-    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
-             :collapse="isCollapse">
-      <el-submenu index="1">
-        <template slot="title">
-          <i class="el-icon-message"></i>
-          <span slot="title">导航一</span>
-        </template>
-        <el-menu-item-group>
-          <span slot="title">分组一</span>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <span slot="title">选项4</span>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
-      </el-menu-item>
-      <el-menu-item index="3">
-        <i class="el-icon-setting"></i>
-        <span slot="title">导航三</span>
-      </el-menu-item>
-    </el-menu>
-  </div>
+  <sidenav :datas="navListDatas"></sidenav>
 </template>
-<style>
-  .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
-    min-height: 400px;
-  }
-</style>
 
 <script>
+  import Vue from 'vue'
+  import sidenav from "../../frameworks/howso/howso_sidenav/howsoSidenav.vue";
   export default {
-    data() {
+    name:'sideNav',
+    components:{sidenav},
+    data(){
       return {
-        isCollapse: true
-      };
-    },
-    methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
+        navListDatas:[
+          {
+            "label": "MRO分析",
+            "class": "menu",
+            "iconClass": "icon1",
+            children: [
+              {
+                "label": "网络覆盖概况",
+                "class": "subMenu1",
+                "iconClass": "cirIcon",
+                "path": 'networkCoverOverview',
+                children:[{
+                  "label": "弱覆盖分析",
+                  "class": "subMenu2",
+                  "path": 'weakCoverAnalysis',
+                  "children": [
+                    {
+                      "label": "重叠覆盖度分析",
+                      "class": "subMenu2",
+                      "path": 'overlappingCoverAnalysis'
+                    },
+                    {
+                      "label": "过覆盖分析",
+                      "class": "subMenu2",
+                      "path": 'overCoverAnalysis'
+                    },
+                    {
+                      "label": "弱覆盖分析",
+                      "class": "subMenu2",
+                      "path": 'weakCoverAnalysis',
+                      children:[{
+                        "label": "弱覆盖分析",
+                        "class": "subMenu2",
+                        "path": 'weakCoverAnalysis'
+                      }]
+                    }
+                  ]
+                }]
+              },
+              {
+                "label": "网络覆盖地理化",
+                "class": "subMenu1",
+                "iconClass": "cirIcon",
+                "path": 'networkCoverGeography'
+              },
+              {
+                "label": "网络覆盖分析",
+                "class": "subMenu1",
+                "iconClass": "cirIcon",
+                "children": [
+                  {
+                    "label": "重叠覆盖度分析",
+                    "class": "subMenu2",
+                    "path": 'overlappingCoverAnalysis',
+                    "children": [
+                      {
+                        "label": "重叠覆盖度分析",
+                        "class": "subMenu2",
+                        "path": 'overlappingCoverAnalysis'
+                      },
+                      {
+                        "label": "过覆盖分析",
+                        "class": "subMenu2",
+                        "path": 'overCoverAnalysis'
+                      },
+                      {
+                        "label": "弱覆盖分析",
+                        "class": "subMenu2",
+                        "path": 'weakCoverAnalysis',
+                        children:[{
+                          "label": "弱覆盖分析",
+                          "class": "subMenu2",
+                          "path": 'weakCoverAnalysis'
+                        }]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "过覆盖分析",
+                    "class": "subMenu2",
+                    "path": 'overCoverAnalysis'
+                  },
+                  {
+                    "label": "弱覆盖分析",
+                    "class": "subMenu2",
+                    "path": 'weakCoverAnalysis',
+                    children:[{
+                      "label": "弱覆盖分析",
+                      "class": "subMenu2",
+                      "path": 'weakCoverAnalysis'
+                    }]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
+    },
+    methods:{
+
     }
   }
 </script>
