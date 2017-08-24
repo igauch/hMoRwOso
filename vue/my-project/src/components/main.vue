@@ -1,8 +1,13 @@
 <template>
   <div class="main">
-    <top-bar></top-bar>
-    <div>
+    <div class="top-bar">
+      <top-bar></top-bar>
+    </div>
+    <div class="side-nav">
       <side-nav></side-nav>
+    </div>
+    <div class="main-router-view">
+      <router-view name="main"></router-view>
     </div>
   </div>
 </template>
@@ -26,3 +31,12 @@
     }
   }
 </script>
+
+<style lang="scss">
+  .side-nav{
+    width: 180px;
+    ul{
+      padding-left: 10px;
+    }
+  }
+</style>

@@ -30,7 +30,7 @@ module.exports = {
     proxyTable: {
       // proxy all requests starting with /api to jsonplaceholder
       '/api': {
-        target: 'http://192.168.10.181:8081/deeplan.son.mro/',
+        target: 'http://192.168.10.31:8081/deeplan.son.mro/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

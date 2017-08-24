@@ -6,6 +6,7 @@ import Router from 'vue-router'
  */
 import login from '@/components/login'
 import main from '@/components/main'
+import weakCoverAnalysis from '@/components/weakCoverAnalysis'
 import test from './test.vue'
 
 /**
@@ -42,7 +43,10 @@ export let router = new Router({
     {
       path:'/',
       name:'main',
-      component: main
+      components: {
+        default:main,
+        main:weakCoverAnalysis
+      }
     },
     {
       path:'/test',
