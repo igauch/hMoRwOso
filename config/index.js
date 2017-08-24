@@ -23,17 +23,17 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8082,
+    port: 8089,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
       // proxy all requests starting with /api to jsonplaceholder
-      '/api': {
-        target: 'http://192.168.10.31:8081/deeplan.son.mro/',
+      '/resources': {
+        target: 'http://howsodev.igauch.cn:8081/deeplan.son.mro/',
         changeOrigin: true,
         pathRewrite: {
-          '^/api': ''
+          '^/resources': ''
         }
       }
     },

@@ -8,9 +8,6 @@
 # install dependencies
 npm install
 
-# 替换bootstrap官方变量为你的变量
-npm run customBootstrap
-
 # serve with hot reload at localhost:8080
 npm run dev
 

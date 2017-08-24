@@ -4,6 +4,6 @@
 import axios from 'axios'
 export default {
   PoorCoverageList:(data)=>{
-    return axios.post('/api/netOverlayAnalysis/getPoorCoverageList',$.param(data));
+    return axios.post('/resources/netOverlayAnalysis/getPoorCoverageList',$.param(data));
   }
 }
