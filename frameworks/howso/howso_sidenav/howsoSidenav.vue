@@ -13,21 +13,7 @@
 
 <script>
   import Vue from 'vue'
-//  import $ from 'jquery'
-  //  根据激活的路由初始化展开的部分
-  //  let activeShow = function () {
-  //    let allShowEle = $root.filter('.router-link-active').parents().filter(function () {
-  //      if (this.nodeName === 'UL') {
-  //        return true
-  //      }
-  //    });
-  //    allShowEle.map(function (v) {
-  //      if (attr.type !== 'right') {
-  //        angular.element(v).prev().find('.caretCtrl').removeClass('caret-right').addClass('caret');
-  //      }
-  //    });
-  //    $.map(allShowEle).show();
-  //  };
+
   export default {
     name: 'sideNav',
     components: {
@@ -101,9 +87,7 @@
       initNavData(this.navListData);
     },
     mounted(){
-      let activePath=this.$router.path;
-//      v.path===activePath&&console.log(v,v.path,activePath)&&(this.activePathDeep=deep);
-//      this.expandByActiveRouter(this.$el);
+
     }
   }
 </script>
