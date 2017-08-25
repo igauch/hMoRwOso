@@ -3,13 +3,13 @@
     <div class="top-bar">
       <top-bar></top-bar>
     </div>
-    <div class="side-nav">
-      <side-nav></side-nav>
-    </div>
-    <div class="main-router-view">
-      <router-view>
-
-      </router-view>
+    <div class="d-flex">
+      <div class="side-nav">
+        <side-nav></side-nav>
+      </div>
+      <div class="main-router-view">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
@@ -40,5 +40,8 @@
     ul{
       padding-left: 10px;
     }
+  }
+  .main-router-view{
+    flex: 1 1 100%;
   }
 </style>

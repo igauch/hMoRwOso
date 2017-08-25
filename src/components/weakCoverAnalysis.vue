@@ -31,7 +31,7 @@
         <td class="text-right">{{li.gatherCellNums}}</td>
         <td class="text-right">{{li.totalSamplingPoints}}</td>
         <td class="text-center">
-          <div v-hide="li.assist"><!--v-click="layer('#plotTable',$event,$index)"-->
+          <div v-show="!li.assist"><!--v-click="layer('#plotTable',$event,$index)"-->
             <a href="javascript:void (0);">小区详表</a>
           </div>
         </td>
@@ -67,12 +67,12 @@
         for (let i = 0; i < pushLength; i++) {//补齐
           this[dataId].push({assist:true});
         }
-        timeout(function () {//主要避免弹出的表格位置异常问题
-          if(dataId!=='list'&&!check){
-            $(window).resize().resize();
-          }
+//        timeout(function () {//主要避免弹出的表格位置异常问题
+//          if(dataId!=='list'&&!check){
+//            $(window).resize().resize();
+//          }
 //          layer.close(this.layerIndex);
-        });
+//        });
       }
     },
     created(){

@@ -33,5 +33,5 @@ let copy = function (from, to) {
     read(tar,callback)
   };
 //在必要时可重置BS变量文件
-// copy("node_modules/bootstrap/scss/_variables.scss", "src/assets/style/custom_bootstrap_var.scss");
-replace('node_modules/bootstrap/scss/bootstrap.scss','variables','src/assets/style/custom_bootstrap_var');
+copy("node_modules/bootstrap/scss/_variables.scss", "src/styles/sass/custom_bootstrap_var.scss");
+// replace('node_modules/bootstrap/scss/bootstrap.scss','variables','src/styles/sass/custom_bootstrap_var');

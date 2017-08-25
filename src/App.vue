@@ -33,10 +33,25 @@ export default {
   @import "~bootstrap/scss/bootstrap.scss";
   @import "~element-ui/lib/theme-default/index.css";
 
+  $brand-primary:#0885FD;
+
   html{
     font-size: 14px;
   }
   html, body, #app {
     height: 100%;
+  }
+  /* 工具类 */
+  .cursor-pointer{
+    cursor: pointer;
+  }
+  .flex-1{
+    flex: 1;
+  }
+  .a-p{
+    &,&:hover,&:active,&:focus,&:visited,&.active{
+      text-decoration: none;
+      color: $brand-primary;
+    }
   }
 </style>

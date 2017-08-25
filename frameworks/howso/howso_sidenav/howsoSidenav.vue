@@ -34,17 +34,17 @@
       howsoSidenavItem: {
         name: 'howsoSidenavItem',
         template:
-          `<li class="list-unstyled bg-primary">
-            <a v-if="data.href" class="bg-primary cursor-pointern d-block" :to="data.href" @click="itemClick(data,$event)">
+          `<li class="list-unstyled">
+            <router-link v-if="data.path" class="d-block a-p" :to="data.path" @click="itemClick">
               <span v-if="data.iconClass" class="d-inline-block" :class="data.iconClass"></span>{{data.label}}
-            </a>
-            <div v-if="!data.href" class="cursor-pointer d-flex align-items-center"  @click="itemClick(data,$event)">
+            </router-link>
+            <div v-if="!data.path" class="cursor-pointer d-flex align-items-center"  @click="itemClick">
               <span v-if="data.iconClass" class="d-inline-block" :class="data.iconClass"></span>
               <span class="menuTitle">{{data.label}}</span>
               <span class="flex-1"></span>
-              <span class="caretCtrl caret-right" v-if="data.children&&data.children.length"></span>
+              <span class="iconfont icon-triangle" v-if="data.children&&data.children.length"></span>
             </div>
-            <ul v-show="data.children&&(!data.isFolder||data.deep>activePathDeep)" :class="[align, data.deepClass]">
+            <ul v-show="data.children&&!data.isFolder" :class="[align, data.deepClass]">
               <howso-sidenav-item :activePathDeeps="activePathDeep" :datas="data" v-for="(data,index) in data.children" :key="index"></howso-sidenav-item>
             </ul>
            </li>`,
@@ -73,17 +73,9 @@
       }
     },
     methods:{
-      /**
-       *
-       * @param e
-       */
-      expandByActiveRouter(e){
-        console.log(e);
-      }
+
     },
     created(){
-      let activePath=this.$router.path;
-
       let deep=0; //记录当前循环的数据深度
       /**
        * 格式化传进来的导航数据，就是增加一些字段以数据驱动DOM行为
@@ -92,7 +84,6 @@
       let initNavData=(data)=>{
         deep++;
         data=data.map( (v,k) => {
-          v.path===activePath&&(this.activePathDeep=deep);
           if(!v.children){
             deep=(k===data.length-1) ? (deep-1) : deep;
             return v;
@@ -110,7 +101,9 @@
       initNavData(this.navListData);
     },
     mounted(){
-      this.expandByActiveRouter(this.$el);
+      let activePath=this.$router.path;
+//      v.path===activePath&&console.log(v,v.path,activePath)&&(this.activePathDeep=deep);
+//      this.expandByActiveRouter(this.$el);
     }
   }
 </script>

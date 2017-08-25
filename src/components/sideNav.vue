@@ -20,34 +20,7 @@
                 "label": "网络覆盖概况",
                 "class": "subMenu1",
                 "iconClass": "cirIcon",
-                "path": 'networkCoverOverview',
-                children:[{
-                  "label": "弱覆盖分析",
-                  "class": "subMenu2",
-                  "path": 'weakCoverAnalysis',
-                  "children": [
-                    {
-                      "label": "重叠覆盖度分析",
-                      "class": "subMenu2",
-                      "path": 'overlappingCoverAnalysis'
-                    },
-                    {
-                      "label": "过覆盖分析",
-                      "class": "subMenu2",
-                      "path": 'overCoverAnalysis'
-                    },
-                    {
-                      "label": "弱覆盖分析",
-                      "class": "subMenu2",
-                      "path": 'weakCoverAnalysis',
-                      children:[{
-                        "label": "弱覆盖分析",
-                        "class": "subMenu2",
-                        "path": 'weakCoverAnalysis'
-                      }]
-                    }
-                  ]
-                }]
+                "path": 'networkCoverOverview'
               },
               {
                 "label": "网络覆盖地理化",
@@ -63,29 +36,7 @@
                   {
                     "label": "重叠覆盖度分析",
                     "class": "subMenu2",
-                    "path": 'overlappingCoverAnalysis',
-                    "children": [
-                      {
-                        "label": "重叠覆盖度分析",
-                        "class": "subMenu2",
-                        "path": 'overlappingCoverAnalysis'
-                      },
-                      {
-                        "label": "过覆盖分析",
-                        "class": "subMenu2",
-                        "path": 'overCoverAnalysis'
-                      },
-                      {
-                        "label": "弱覆盖分析",
-                        "class": "subMenu2",
-                        "path": 'weakCoverAnalysis',
-                        children:[{
-                          "label": "弱覆盖分析",
-                          "class": "subMenu2",
-                          "path": 'weakCoverAnalysis'
-                        }]
-                      }
-                    ]
+                    "path": 'overlappingCoverAnalysis'
                   },
                   {
                     "label": "过覆盖分析",
@@ -95,12 +46,7 @@
                   {
                     "label": "弱覆盖分析",
                     "class": "subMenu2",
-                    "path": 'weakCoverAnalysis',
-                    children:[{
-                      "label": "弱覆盖分析",
-                      "class": "subMenu2",
-                      "path": 'weakCoverAnalysis'
-                    }]
+                    "path": 'weakCoverAnalysis'
                   }
                 ]
               }
