@@ -41,16 +41,18 @@ export let router = new Router({
       component: login
     },
     {
-      path:'/',
-      name:'main',
-      components: {
-        default:main,
-        main:weakCoverAnalysis
-      }
+      path: '/',
+      name: 'main',
+      component: main,
+      children: [{
+        path: 'weakCoverAnalysis',
+        name: 'weakCoverAnalysis',
+        component: weakCoverAnalysis
+      }]
     },
     {
-      path:'/test',
-      name:'test',
+      path: '/test',
+      name: 'test',
       component: test
     }
   ]
@@ -59,13 +61,13 @@ export let router = new Router({
 /**
  * 创建全局的导航钩子，用以拦截导航，完成导航或取消
  */
-router.beforeEach((to,from,next)=>{
+router.beforeEach((to, from, next) => {
   /**
    * next 是一个函数，必须被执行，否则这个钩子就不能被resolve，而导航也会一直在等待中，所以必须调用以完成逻辑
    */
-  if(to.name==='login'||sessionStorage.getItem('userName')){
+  if (to.name === 'login' || sessionStorage.getItem('userName')) {
     next();
-  }else {
+  } else {
     next('/login');
     /**
      * vue-router只能在已经定义的规则里去匹配路由

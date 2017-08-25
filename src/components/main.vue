@@ -7,7 +7,9 @@
       <side-nav></side-nav>
     </div>
     <div class="main-router-view">
-      <router-view name="main"></router-view>
+      <router-view>
+
+      </router-view>
     </div>
   </div>
 </template>
