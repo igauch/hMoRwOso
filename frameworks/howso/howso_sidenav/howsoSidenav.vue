@@ -22,11 +22,11 @@
         template:
           `<li class="list-unstyled">
             <router-link v-if="data.path" class="d-block a-p" :to="data.path" @click="itemClick">
-              <span v-if="data.iconClass" class="d-inline-block" :class="data.iconClass"></span>{{data.label}}
+              <span v-if="data.iconClass" class="d-inline-block" :class="data.iconClass"></span>{{data.l}}<span style="color: red;margin-left: 10px;">{{data.at}}</span>
             </router-link>
             <div v-if="!data.path" class="cursor-pointer d-flex align-items-center"  @click="itemClick">
               <span v-if="data.iconClass" class="d-inline-block" :class="data.iconClass"></span>
-              <span class="menuTitle">{{data.label}}</span>
+              <span class="menuTitle">{{data.l}}</span>
               <span class="flex-1"></span>
               <span class="iconfont icon-triangle" v-if="data.children&&data.children.length"></span>
             </div>
@@ -63,13 +63,16 @@
     },
     created(){
       let deep=0; //记录当前循环的数据深度
+      let at='';
       /**
        * 格式化传进来的导航数据，就是增加一些字段以数据驱动DOM行为
        * @param data 遍历的数组
        */
       let initNavData=(data)=>{
         deep++;
+        let test=0;
         data=data.map( (v,k) => {
+          test++;
           if(!v.children){
             deep=(k===data.length-1) ? (deep-1) : deep;
             return v;
@@ -79,6 +82,8 @@
            */
           Vue.set(v,'isFolder',Boolean(deep));
           Vue.set(v,'deep',deep);
+          at+=('-'+test);
+          Vue.set(v,'at',at+=('-'+deep));
           initNavData(v.children);
           deep=(k===data.length-1) ? (deep-1) : deep;
           return v;

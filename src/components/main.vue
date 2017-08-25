@@ -36,7 +36,7 @@
 
 <style lang="scss">
   .side-nav{
-    width: 180px;
+    width: 280px;
     ul{
       padding-left: 10px;
     }
