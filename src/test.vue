@@ -1,116 +1,59 @@
 <template>
-  <sidenav :datas="navListDatas"></sidenav>
+  <div>
+    <div style="width: 500px;height: 400px;">
+      <echarts :option="option"></echarts>
+    </div>
+  </div>
 </template>
 
 <script>
-  import Vue from 'vue'
-  import sidenav from "../frameworks/howso/howso_sidenav/howsoSidenav.vue";
-  export default {
-    name:'sideNav',
-    components:{sidenav},
-    data(){
-      return {
-        navListDatas:[
-          {
-            "label": "MRO分析",
-            "class": "menu",
-            "iconClass": "icon1",
-            children: [
-              {
-                "label": "网络覆盖概况",
-                "class": "subMenu1",
-                "iconClass": "cirIcon",
-                "path": 'networkCoverOverview',
-                children:[{
-                  "label": "弱覆盖分析",
-                  "class": "subMenu2",
-                  "path": 'weakCoverAnalysis',
-                  "children": [
-                    {
-                      "label": "重叠覆盖度分析",
-                      "class": "subMenu2",
-                      "path": 'overlappingCoverAnalysis'
-                    },
-                    {
-                      "label": "过覆盖分析",
-                      "class": "subMenu2",
-                      "path": 'overCoverAnalysis'
-                    },
-                    {
-                      "label": "弱覆盖分析",
-                      "class": "subMenu2",
-                      "path": 'weakCoverAnalysis',
-                      children:[{
-                        "label": "弱覆盖分析",
-                        "class": "subMenu2",
-                        "path": 'weakCoverAnalysis'
-                      }]
-                    }
-                  ]
-                }]
-              },
-              {
-                "label": "网络覆盖地理化",
-                "class": "subMenu1",
-                "iconClass": "cirIcon",
-                "path": 'networkCoverGeography'
-              },
-              {
-                "label": "网络覆盖分析",
-                "class": "subMenu1",
-                "iconClass": "cirIcon",
-                "children": [
-                  {
-                    "label": "重叠覆盖度分析",
-                    "class": "subMenu2",
-                    "path": 'overlappingCoverAnalysis',
-                    "children": [
-                      {
-                        "label": "重叠覆盖度分析",
-                        "class": "subMenu2",
-                        "path": 'overlappingCoverAnalysis'
-                      },
-                      {
-                        "label": "过覆盖分析",
-                        "class": "subMenu2",
-                        "path": 'overCoverAnalysis'
-                      },
-                      {
-                        "label": "弱覆盖分析",
-                        "class": "subMenu2",
-                        "path": 'weakCoverAnalysis',
-                        children:[{
-                          "label": "弱覆盖分析",
-                          "class": "subMenu2",
-                          "path": 'weakCoverAnalysis'
-                        }]
-                      }
-                    ]
-                  },
-                  {
-                    "label": "过覆盖分析",
-                    "class": "subMenu2",
-                    "path": 'overCoverAnalysis'
-                  },
-                  {
-                    "label": "弱覆盖分析",
-                    "class": "subMenu2",
-                    "path": 'weakCoverAnalysis',
-                    children:[{
-                      "label": "弱覆盖分析",
-                      "class": "subMenu2",
-                      "path": 'weakCoverAnalysis'
-                    }]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    },
-    methods:{
+  import echarts from '@/components/echarts'
 
+  export default {
+    name: 'test',
+    components: {
+      echarts: echarts
+    },
+    data() {
+      return {
+        option: {
+          color: ['#3398DB'],
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+              type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+          },
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+          },
+          xAxis: [
+            {
+              type: 'category',
+              data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+              axisTick: {
+                alignWithLabel: true
+              }
+            }
+          ],
+          yAxis: [
+            {
+              type: 'value'
+            }
+          ],
+          series: [
+            {
+              name: '直接访问',
+              type: 'bar',
+              barWidth: '60%',
+              data: [10, 52, 200, 334, 390, 330, 220]
+            }
+          ]
+        }
+      }
     }
   }
 </script>

@@ -6,7 +6,10 @@ import Router from 'vue-router'
  */
 import login from '@/components/login'
 import main from '@/components/main'
-import weakCoverAnalysis from '@/components/weakCoverAnalysis'
+import weakCoverAnalysis from './views/weakCoverAnalysis.vue'
+import networkCoverOverview from './views/networkCoverOverview.vue'
+import overCoverAnalysis from './views/overCoverAnalysis.vue'
+import overlappingCoverAnalysis from './views/overlappingCoverAnalysis.vue'
 import test from './test.vue'
 
 /**
@@ -44,11 +47,28 @@ export let router = new Router({
       path: '/',
       name: 'main',
       component: main,
-      children: [{
-        path: 'weakCoverAnalysis',
-        name: 'weakCoverAnalysis',
-        component: weakCoverAnalysis
-      }]
+      children: [
+        {
+          path: 'weakCoverAnalysis',
+          name: 'weakCoverAnalysis',
+          component: weakCoverAnalysis
+        },
+        {
+          path: 'networkCoverOverview',
+          name: 'networkCoverOverview',
+          component: networkCoverOverview
+        },
+        {
+          path: 'overCoverAnalysis',
+          name: 'overCoverAnalysis',
+          component: overCoverAnalysis
+        },
+        {
+          path: 'overlappingCoverAnalysis',
+          name: 'overlappingCoverAnalysis',
+          component: overlappingCoverAnalysis
+        }
+      ]
     },
     {
       path: '/test',

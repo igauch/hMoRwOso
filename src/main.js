@@ -33,12 +33,14 @@ Vue.use(Tooltip);
 import App from './App.vue'
 import { router } from './router.index'
 import axios from 'axios'
+import echarts from 'echarts'
 
 /**
  * 扩展Vue原型链以在每个Vue实例、组件中使用
  * 因为Vue组件和实例的this都指向Vue，所以使用时直接this.$http
  */
 Vue.prototype.$http=axios;
+Vue.prototype.echarts=echarts;
 
 /**
  * @type {boolean}

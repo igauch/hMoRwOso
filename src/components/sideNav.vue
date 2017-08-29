@@ -25,8 +25,7 @@
               {
                 "label": "网络覆盖地理化",
                 "class": "subMenu1",
-                "iconClass": "cirIcon",
-                "path":'/networkCoverGeography'
+                "iconClass": "cirIcon"
               },
               {
                 "label": "网络覆盖分析",
@@ -36,12 +35,12 @@
                   {
                     "label": "重叠覆盖度分析",
                     "class": "subMenu2",
-                    "path": 'overlappingCoverAnalysis'
+                    "path": '/overlappingCoverAnalysis'
                   },
                   {
                     "label": "过覆盖分析",
                     "class": "subMenu2",
-                    "path": 'overCoverAnalysis'
+                    "path": '/overCoverAnalysis'
                   },
                   {
                     "label": "弱覆盖分析",
